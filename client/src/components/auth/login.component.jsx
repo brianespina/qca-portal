@@ -1,7 +1,11 @@
 import React, { Fragment, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { login } from '../../redux/reducers/auth/auth.actions'  
+import { selecAuthIsAuthenticated } from '../../redux/reducers/auth/auth.selector'  
+import { createStructuredSelector } from 'reselect'
 
-const Login = () => {
+const Login = ({ login, isAuthenticated}) => {
 
     const [formData, setFormData] = useState({
         email: '',
@@ -17,6 +21,11 @@ const Login = () => {
 
     const handleSubmit = async e => {
         e.preventDefault()
+        login(email, password)
+    }
+
+    if(isAuthenticated){
+        return <Redirect to='/dashboard'/>
     }
 
     return(
@@ -26,14 +35,13 @@ const Login = () => {
             <form className="form" onSubmit={e => handleSubmit(e)}>
 
                 <div className="form-group">
-                <input type="email" placeholder="Email Address" value={email} onChange={e => handleCange(e)} name="email" required/>
+                <input type="email" placeholder="Email Address" value={email} onChange={e => handleCange(e)} name="email"/>
                 </div>
                 <div className="form-group">
                 <input
                     type="password"
                     placeholder="Password"
                     name="password"
-                    minLength="6"
                     value={password} 
                     onChange={e => handleCange(e)}
                 />
@@ -47,4 +55,13 @@ const Login = () => {
     )
 }
 
-export default Login
+const mapDispatchToProps = {
+    login
+}
+
+const mapStateToProps = createStructuredSelector({
+    isAuthenticated: selecAuthIsAuthenticated
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

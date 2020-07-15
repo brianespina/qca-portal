@@ -1,11 +1,13 @@
 import React, { Fragment, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setAlert } from '../../redux/reducers/alert/alert.action'
 import { register } from '../../redux/reducers/auth/auth.actions'
-import PropTypes from 'prop-types'
+import { selecAuthIsAuthenticated } from '../../redux/reducers/auth/auth.selector'  
+import { createStructuredSelector } from 'reselect'
 
-const Register = ({ setAlert, register }) => {
+
+const Register = ({ setAlert, register, isAuthenticated }) => {
 
     const [formData, setFormData] = useState({
         name: '',
@@ -29,6 +31,10 @@ const Register = ({ setAlert, register }) => {
 
             register({name, email, password})
         }
+    }
+
+    if(isAuthenticated){
+        return <Redirect to='/dashboard'/>
     }
 
     return(
@@ -80,8 +86,8 @@ const mapDispatchToProps = {
     register
 }
 
-Register.propTypes = {
-    setAlert: PropTypes.func.isRequired
-}
+const mapStateToProps = createStructuredSelector({
+    isAuthenticated: selecAuthIsAuthenticated
+})
 
-export default connect(null, mapDispatchToProps )(Register)
+export default connect(mapStateToProps, mapDispatchToProps )(Register)

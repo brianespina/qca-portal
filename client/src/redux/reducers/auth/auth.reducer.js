@@ -14,6 +14,7 @@ const authReducer = ( state = INITIAL_STATE, action ) => {
     switch(type){
 
         case authActionTypes.REGISTER_SUCCESS:
+        case authActionTypes.LOGIN_SUCCESS:
             localStorage.setItem('token', payload.token)
             return{
                 ...state,
@@ -23,6 +24,8 @@ const authReducer = ( state = INITIAL_STATE, action ) => {
             }
         
         case authActionTypes.REGISTER_FAIL:
+        case authActionTypes.AUTH_ERROR:
+        case authActionTypes.LOGIN_FAIL:
             localStorage.removeItem('token')
             return{
                 ...state,
