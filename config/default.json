@@ -1,0 +1,4 @@
+{
+    "mongoURI" : "mongodb+srv://espinabrian:braintank11@qca.2flac.mongodb.net/QCA?retryWrites=true&w=majority",
+    "jwtSecret": "secrettoken"
+}
