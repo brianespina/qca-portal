@@ -6,17 +6,20 @@ import { register } from '../../redux/reducers/auth/auth.actions'
 import { selecAuthIsAuthenticated } from '../../redux/reducers/auth/auth.selector'  
 import { createStructuredSelector } from 'reselect'
 
+import Card from '../card/card.component'
+
 
 const Register = ({ setAlert, register, isAuthenticated }) => {
 
     const [formData, setFormData] = useState({
         name: '',
         email: '',
+        type: 'student',
         password: '',
         password2: ''
     })
 
-    const { name, email, password, password2 } = formData
+    const { name, email, type, password, password2 } = formData
 
     const handleCange = ({ target }) => setFormData({
         ...formData,
@@ -28,8 +31,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
         if(password !== password2){
             setAlert('Passwords do not match', 'danger')
         }else{
-
-            register({name, email, password})
+            register({name, email, type, password})
         }
     }
 
@@ -38,7 +40,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     }
 
     return(
-        <Fragment>
+        <Card classes="card--small animate-to-top">
             <h1 className="large text-primary">Sign Up</h1>
             <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
             <form className="form" onSubmit={e => handleSubmit(e)}>
@@ -77,7 +79,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             <p className="my-1">
                 Already have an account? <Link to="/login">Sign In</Link>
             </p>
-        </Fragment>
+        </Card>
     )
 }
 

@@ -13,15 +13,16 @@ router.get('/me', auth, async(req, res) => {
     try{
         const profile = await Profile.findOne({
             user: req.user.id
-        }).populate('user', ['name', 'avatar'])
+        }).populate('user', ['name', 'avatar', 'email'])
 
         if(!profile){
-            return res.status(400).json({message: 'no profile'})
+            console.log('IF exec')
+            return res.status(400).json({message: 'no profile'})            
         }
 
         res.json(profile)
 
-    }catch(err){
+    }catch(err){    
         console.error(err.message)
         res.status(500).send('Server Error')
     }
@@ -31,8 +32,9 @@ router.get('/me', auth, async(req, res) => {
 //@desc Create or update user profile
 //@access Private
 router.post('/' , [auth, [
-    check('status', 'Status is required').not().isEmpty(),
-    check('skills', 'Skills is required').not().isEmpty()
+    check('address', 'Address is required').not().isEmpty(),
+    check('phone', 'Phone number is required').not().isEmpty(),
+    check('emergency', 'Emergency phone number is required').not().isEmpty()
 ]], async (req, res) => {
     const errors = validationResult(req)
     if(!errors.isEmpty()){
@@ -40,39 +42,27 @@ router.post('/' , [auth, [
     }
 
     const {
-        company,
-        website,
-        location,
+        phone,
+        emergency,
+        address,
+        belt,
         bio,
-        status,
-        githubusername,
-        skills,
-        youtube,
         facebook,
         twitter,
-        instagram,
-        linkedin
+        instagram
     } = req.body
 
     const profileFields = {}
     profileFields.user = req.user.id
-    if(company) profileFields.company = company
-    if(website) profileFields.website = website
-    if(location) profileFields.location = location
+    if(phone) profileFields.phone = phone
+    if(emergency) profileFields.emergency = emergency
+    if(address) profileFields.address = address
+    if(belt) profileFields.belt = belt
     if(bio) profileFields.bio = bio
-    if(status) profileFields.status = status
-    if(githubusername) profileFields.githubusername = githubusername
-    if(skills){
-        profileFields.skills = skills
-        .split(',')
-        .map(skill => skill.trim())
-    }
 
     profileFields.social = {}
-    if(youtube) profileFields.social.youtube = youtube
     if(twitter) profileFields.social.twitter = twitter
     if(facebook) profileFields.social.facebook = facebook
-    if(linkedin) profileFields.social.linkedin = linkedin
     if(instagram) profileFields.social.instagram = instagram
 
     try{

@@ -26,7 +26,7 @@ router.post(
             return res.status(400).json({ errors: errors.array() })
         }
 
-        const { name, email, password } = req.body
+        const { name, email, type, password } = req.body
 
         
         try{
@@ -50,6 +50,7 @@ router.post(
             user = new User({
                 name,
                 email,
+                type,
                 avatar, 
                 password
             })

@@ -1,10 +1,12 @@
 /* Global Styles */
 :root {
-  --primary-color: #17a2b8;
+  --primary-color: #fb5d5d;
   --dark-color: #343a40;
-  --light-color: #f4f4f4;
+  --light-color: #f9f9f9;
+  --white-color: #FFF;
   --danger-color: #dc3545;
   --success-color: #28a745;
+  --qca-red-color: #fb5d5d;
 }
 
 * {
@@ -13,11 +15,14 @@
   padding: 0;
 }
 
+html{
+  background-color: #f2f2f2;
+}
+
 body {
   font-family: 'Raleway', sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-  background-color: #fff;
   color: #333;
 }
 
@@ -256,6 +261,7 @@ img {
   padding: 0.4rem;
   font-size: 1.2rem;
   border: 1px solid #ccc;
+  border-radius: 3px;
 }
 
 .form input[type='submit'],
@@ -308,8 +314,8 @@ button {
   z-index: 1;
   width: 100%;
   top: 0;
-  border-bottom: solid 1px var(--primary-color);
-  opacity: 0.9;
+  background-color: var(--white-color);
+  box-shadow: 0 0 10px rgba(0,0,0,.09);
 }
 
 .navbar ul {
@@ -317,13 +323,13 @@ button {
 }
 
 .navbar a {
-  color: #fff;
+  color: #333;
   padding: 0.45rem;
   margin: 0 0.25rem;
 }
 
 .navbar a:hover {
-  color: var(--primary-color);
+  color: var(--qca-red-color);
 }
 
 .navbar .welcome span {
@@ -488,6 +494,62 @@ button {
   margin-bottom: 0.5rem;
 }
 
+.card{
+  background-color: white;
+  padding: 50px;
+  box-shadow: 0 0 15px rgba(0,0,0,.09);
+  margin-bottom: 40px;
+  border-radius: 3px;
+}
+
+.animate-to-top{
+  animation: moveToTop .5s ease-in-out;
+}
+
+.card--small{
+  max-width: 600px;
+  margin: auto;
+  margin-bottom: 40px;
+}
+
+/* Modal */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #b5b5b5b5;
+  z-index: 10;
+  animation: fadeIn .5s ease-in-out;
+}
+
+.modal-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal-container .card{
+  animation: modal .3s ease-in-out;
+}
+
+.modal-container__close-button {
+  position: absolute;
+  right: 0;
+  font-size: 25px;
+  top: 0;
+  line-height: 31px;
+  background: #fff;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 3px;
+  animation: fadeIn .8s ease-in-out;
+}
 /* Mobile Styles */
 @media (max-width: 700px) {
   .container {
@@ -573,5 +635,36 @@ button {
   .post a,
   .post button {
     padding: 0.3rem 0.4rem;
+  }
+}
+
+@keyframes moveToTop{
+  0%{
+    opacity: 0;
+    transform: translateY(300px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes modal{
+  0%{
+    opacity: 0;
+    transform: scale(.3);
+  }
+  100%{
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
   }
 }

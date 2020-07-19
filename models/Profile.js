@@ -5,88 +5,40 @@ const ProfileSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'user'
     },
-    company: {
+    phone: {
       type: String
     },
-    website: {
+    emergency: {
       type: String
     },
-    location: {
+    address: {
       type: String
     },
-    status: {
-      type: String,
-      required: true
-    },
-    skills: {
-      type: [String],
-      required: true
+    belt: {
+      type: String
     },
     bio: {
       type: String
     },
-    githubusername: {
-      type: String
+    competition: {
+      event: {
+        type: String
+      },
+      status: {
+        type: Boolean
+      }
     },
-    experience: [
-      {
-        title: {
-          type: String,
-          required: true
-        },
-        company: {
-          type: String,
-          required: true
-        },
-        location: {
-          type: String
-        },
-        from: {
-          type: Date,
-          required: true
-        },
-        to: {
-          type: Date
-        },
-        current: {
-          type: Boolean,
-          default: false
-        },
-        description: {
-          type: String
-        }
+    subscription: {
+      subtype: {
+        type: String
+      },
+      start: {
+        type: Date
+      },
+      end: {
+        type: Date
       }
-    ],
-    education: [
-      {
-        school: {
-          type: String,
-          required: true
-        },
-        degree: {
-          type: String,
-          required: true
-        },
-        fieldofstudy: {
-          type: String,
-          required: true
-        },
-        from: {
-          type: Date,
-          required: true
-        },
-        to: {
-          type: Date
-        },
-        current: {
-          type: Boolean,
-          default: false
-        },
-        description: {
-          type: String
-        }
-      }
-    ],
+    },
     social: {
       youtube: {
         type: String
