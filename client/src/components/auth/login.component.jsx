@@ -32,7 +32,7 @@ const Login = ({ login, isAuthenticated, isAdmin, loading}) => {
             
             {!loading && isAuthenticated && <Redirect to='/profile'/>}
 
-            <Card classes="card--small animate-to-top">
+            <Card classes="card--small animate-to-top card--floating">
                 <h1 className="large text-primary">Sign In</h1>
                 <p className="lead"><i className="fas fa-user"></i> Sign in to your account</p>
                 <form className="form" onSubmit={e => handleSubmit(e)}>

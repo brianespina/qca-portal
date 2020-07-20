@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import { selecAuthIsAuthenticated } from '../../redux/reducers/auth/auth.selector'
+import Logo from '../../img/qca.png'
 
 const Landing = ({ isAuthenticated }) => {
 
@@ -12,16 +13,13 @@ const Landing = ({ isAuthenticated }) => {
 
     return(
         <section className="landing">
-            <div className="dark-overlay">
+            <div className="light-overlay">
                 <div className="landing-inner">
-                    <h1 className="x-large">Developer Connector</h1>
-                    <p className="lead">
-                    Create a developer profile/portfolio, share posts and get help from
-                    other developers
-                    </p>
-                    <div className="buttons">
-                    <Link to="/register" className="btn btn-primary">Sign Up</Link>
-                    <Link to="/login" className="btn btn-light">Login</Link>
+                    <img src={Logo} alt="QCA" width="100" className="logo"/>
+                    <h1>Quezon Combat Academy Portal</h1>
+                    <div className="buttons buttons--landing-page">
+                    <Link to="/register" className="btn btn-primary">Register</Link>
+                    <Link to="/login" className="btn btn-primary">Login</Link>
                     </div>
                 </div>
             </div>

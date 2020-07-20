@@ -6,6 +6,7 @@ import { selectProfile, selectProfileIsLoading } from '../../../redux/reducers/p
 
 import Modal from '../../modal/modal.component'
 import ProfileForm from '../../profile-form/profile-form.component'
+import MainLayout from '../../layout/main-layout.component'
 
 const Profile = ({ profile , getCurrentUsersProfile, profileIsLoading}) =>{
 
@@ -15,16 +16,14 @@ const Profile = ({ profile , getCurrentUsersProfile, profileIsLoading}) =>{
     }, [])
 
     return(
-        <>
-            <div>
-                Profile Page
-            </div>
+        <MainLayout>
+            Profile Page
             { !profileIsLoading && !profile && (
                 <Modal initial={true}>
                     <ProfileForm/>
                 </Modal>)
             }
-        </>
+        </MainLayout>
     )
 }
 

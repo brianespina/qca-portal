@@ -1,25 +1,39 @@
-import React, { useEffect, Fragment } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
+import { Redirect } from 'react-router-dom'
 import { getCurrentUsersProfile } from '../../redux/reducers/profile/profile.actions'
-import { selectAuthState } from '../../redux/reducers/auth/auth.selector'
+import { selectAuthState, selectIsAdmin, selecAuthIsAuthenticated} from '../../redux/reducers/auth/auth.selector'
 import { selectProfile } from '../../redux/reducers/profile/profile.selectors'
-import Spinner from '../layout/spinner.component'
+import MainLayout from '../layout/main-layout.component'
 
-const Dashboard  = ({ auth: { user }, getCurrentUsersProfile}) => {
+const Dashboard  = ({ auth, getCurrentUsersProfile, isAdmin, isAuthenticated}) => {
 
     useEffect(()=>{
         getCurrentUsersProfile()
     }, [])
 
+    if(auth.loading){
+        return <div>page loading...</div>
+    }
+
+    if(!isAdmin){
+        return <Redirect to="/profile"/>
+    }
+
     return (
-        <div>dashboard</div>
+        <>
+            <MainLayout>
+                dashboard
+            </MainLayout>
+        </>
     )
 }
 
 const mapStateToProps = createStructuredSelector({
     auth: selectAuthState,
-    profile: selectProfile
+    profile: selectProfile,
+    isAdmin: selectIsAdmin
 })
 
 export default connect(mapStateToProps, { getCurrentUsersProfile })(Dashboard)
