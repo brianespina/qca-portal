@@ -16,7 +16,6 @@ router.get('/me', auth, async(req, res) => {
         }).populate('user', ['name', 'avatar', 'email'])
 
         if(!profile){
-            console.log('IF exec')
             return res.status(400).json({message: 'no profile'})            
         }
 
@@ -95,7 +94,7 @@ router.post('/' , [auth, [
 //@access   Public
 router.get('/', async (req, res) => {
     try {
-        const profiles = await Profile.find().populate('user', ['avatar', 'name'])
+        const profiles = await Profile.find().populate('user', ['avatar', 'name', 'type'])
         res.json(profiles)
     } catch (err) {
         console.error(err.message)  

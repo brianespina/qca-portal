@@ -35,7 +35,23 @@ export const getAllProfiles = () => async dispatch => {
         })
 
     } catch (error) {
-        console.error(error.response.status)
+        console.log(error)
+    }
+}
+
+export const getAllStudentProfiles = () => async dispatch => {
+    try {
+        const res = await axios.get('api/profile')
+
+        const students = res.data.filter( profile => profile.user.type === 'student')
+        
+        dispatch({
+            type: profileActionTypes.GET_PROFILE_SUCCESS,
+            payload: students
+        })
+
+    } catch (error) {
+        console.log(error)
     }
 }
 

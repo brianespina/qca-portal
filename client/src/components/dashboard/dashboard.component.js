@@ -17,10 +17,6 @@ const Dashboard  = ({ auth, getCurrentUsersProfile, isAdmin, isAuthenticated}) =
         return <div>page loading...</div>
     }
 
-    if(!isAdmin){
-        return <Redirect to="/profile"/>
-    }
-
     return (
         <>
             <MainLayout>

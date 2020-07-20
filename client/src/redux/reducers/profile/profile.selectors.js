@@ -11,3 +11,8 @@ export const selectProfileIsLoading = createSelector(
     selectProfileState,
     profile => profile.loading
 )
+
+export const selectAllStudents = createSelector(
+    selectProfileState,
+    profile => profile.profiles
+)

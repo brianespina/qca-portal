@@ -12,6 +12,7 @@ import Dashboard from './components/dashboard/dashboard.component'
 import PrivateRoute from './components/routing/private-route'
 import Profile from './components/pages/profile/profile.component'
 import MainLayout from './components/layout/main-layout.component'
+import Students from './components/pages/students/students.component'
 
 import './App.css';
 
@@ -44,6 +45,7 @@ const App = () =>{
             } />
             <PrivateRoute admin={true} exact path="/dashboard" component={Dashboard} />
             <PrivateRoute exact path="/profile" component={Profile} />
+            <PrivateRoute admin={true} exact path="/students" component={Students} />
           
         </Switch>
     </Fragment>
