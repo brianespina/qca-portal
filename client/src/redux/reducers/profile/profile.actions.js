@@ -2,7 +2,16 @@ import axios from 'axios'
 import setAlert from '../alert/alert.action'
 import profileActionTypes from './profile.types'
 
+
+export const clearSingleProfile = () => dispatch =>{
+    dispatch({
+        type: profileActionTypes.CLEAR_SINGLE_PROFILE
+    })
+}
+
 export const getCurrentUsersProfile = (id) => async dispatch => {
+
+    dispatch(clearSingleProfile())
     
     try {
         let res 
@@ -11,8 +20,6 @@ export const getCurrentUsersProfile = (id) => async dispatch => {
         }else{
             res = await axios.get('api/profile/me')
         }
-
-        console.log(res)
 
         dispatch({
             type: profileActionTypes.GET_PROFILE,
@@ -26,7 +33,7 @@ export const getCurrentUsersProfile = (id) => async dispatch => {
     }
 }
 
-export const clearProfile = () => dispatch => {
+export const clearAllProfile = () => dispatch => {
     dispatch({
         type: profileActionTypes.CLEAR_PROFILE
     })

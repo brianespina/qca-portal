@@ -39,6 +39,13 @@ function profileReducer(state = INITIAL_STATE, action){
                 profiles: payload,
                 loading: false
             }
+        
+        case profileActionTypes.CLEAR_SINGLE_PROFILE:
+            return{
+                ...state,
+                profile: null,
+                loading: true
+            }
 
         default:
             return {

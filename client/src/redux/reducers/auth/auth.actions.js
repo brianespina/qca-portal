@@ -2,7 +2,7 @@ import axios from 'axios'
 import authActionTypes from './auth.types'
 import { setAlert } from '../alert/alert.action'
 import setAuthToken from '../../../utlils/setAuthToken'
-import { clearProfile } from '../profile/profile.actions'
+import { clearAllProfile } from '../profile/profile.actions'
 
 export const loadUser = () => async dispatch => {
     if(localStorage.token){
@@ -90,7 +90,7 @@ export const login = (email, password) => async dispatch => {
 
 export const logout = () => dispatch => {
 
-    dispatch(clearProfile())
+    dispatch(clearAllProfile())
 
     dispatch({
         type: authActionTypes.LOG_OUT
