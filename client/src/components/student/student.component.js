@@ -1,8 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Student = ({ profile }) =>{
     
-    const { user, phone, emergency, address, belt, bio } = profile
+    const { user, phone, emergency, address, belt, bio, _id } = profile
 
     return(
         <div className="students__item">
@@ -34,7 +35,10 @@ const Student = ({ profile }) =>{
                     { bio }
                 </div>
             } 
-            
+            { user._id &&
+                <Link to={`profile/${user._id}`}> View Profile </Link>
+            }
+
         </div>
     )
 }

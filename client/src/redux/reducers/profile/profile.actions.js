@@ -2,10 +2,17 @@ import axios from 'axios'
 import setAlert from '../alert/alert.action'
 import profileActionTypes from './profile.types'
 
-export const getCurrentUsersProfile = () => async dispatch => {
+export const getCurrentUsersProfile = (id) => async dispatch => {
+    
     try {
+        let res 
+        if (id) {
+            res = await axios.get(`/api/profile/user/${id}`)
+        }else{
+            res = await axios.get('api/profile/me')
+        }
 
-        const res = await axios.get('api/profile/me')
+        console.log(res)
 
         dispatch({
             type: profileActionTypes.GET_PROFILE,

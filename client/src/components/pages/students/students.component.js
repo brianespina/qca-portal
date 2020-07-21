@@ -3,7 +3,7 @@ import { createStructuredSelector } from 'reselect'
 import MainLayout from '../../layout/main-layout.component'
 import { connect } from 'react-redux'
 import { getAllProfiles } from '../../../redux/reducers/profile/profile.actions'
-import { selectAllStudents, selectProfileIsLoading } from '../../../redux/reducers/profile/profile.selectors'
+import { selectAllStudents } from '../../../redux/reducers/profile/profile.selectors'
 import Student from '../../student/student.component'
 
 const Students = ({ getAllProfiles, students}) => {
@@ -12,11 +12,11 @@ const Students = ({ getAllProfiles, students}) => {
         getAllProfiles()
     }, [])
 
-const studentsComponent = students.map( student => <Student profile={student} /> )
+const studentsComponent = students.map( student => <Student key={student._id} profile={student} /> )
 
     return(
         <MainLayout>
-            <div>Students</div> 
+            <h2>Students</h2> 
             <div className="students__list">
                 { studentsComponent }
             </div>

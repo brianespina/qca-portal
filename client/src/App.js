@@ -44,9 +44,10 @@ const App = () =>{
               )
             } />
             <PrivateRoute admin={true} exact path="/dashboard" component={Dashboard} />
+            <PrivateRoute admin={true} exact path="/profile/:id" component={Profile} />
             <PrivateRoute exact path="/profile" component={Profile} />
             <PrivateRoute admin={true} exact path="/students" component={Students} />
-          
+            
         </Switch>
     </Fragment>
   )

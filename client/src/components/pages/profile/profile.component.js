@@ -8,11 +8,10 @@ import Modal from '../../modal/modal.component'
 import ProfileForm from '../../profile-form/profile-form.component'
 import MainLayout from '../../layout/main-layout.component'
 
-const Profile = ({ profile , getCurrentUsersProfile, profileIsLoading}) =>{
+const Profile = ({ profile , getCurrentUsersProfile, profileIsLoading, match}) =>{
 
     useEffect(()=>{
-        getCurrentUsersProfile()
-        console.log(profileIsLoading)
+        getCurrentUsersProfile(match.params.id)
     }, [])
 
     return(
