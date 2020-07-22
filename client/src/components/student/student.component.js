@@ -36,7 +36,10 @@ const Student = ({ profile }) =>{
                 </div>
             } 
             { user._id &&
-                <Link to={`profile/${user._id}`}> View Profile </Link>
+                <Link to={`profile/${user._id}`} className="btn btn-primary"> View Profile </Link>
+            }
+            { user._id &&
+                <Link to={`profile/edit/${user._id}`} className="btn btn-primary"> Edit Profile </Link>
             }
 
         </div>

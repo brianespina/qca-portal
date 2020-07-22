@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import FormInput from '../form-input/form-input.component'
 import { createUpdateProfile } from '../../redux/reducers/profile/profile.actions'
 import { connect } from 'react-redux'
+import { selectProfileIsLoading } from '../../redux/reducers/profile/profile.selectors'
+import { createStructuredSelector } from 'reselect'
 
-const ProfileForm = ({ createUpdateProfile }) =>{
+const ProfileForm = ({ createUpdateProfile, profile, profileIsLoading }) =>{
     
     const [ formData, setFormData ] = useState({
         phone: '',
@@ -12,6 +14,18 @@ const ProfileForm = ({ createUpdateProfile }) =>{
         belt: '',
         bio: ''
     })
+
+    useEffect(()=>{
+        if(profile){
+            setFormData({
+                phone: profile.phone || '',
+                emergency: profile.emergency || '',
+                address: profile.address || '',
+                belt: profile.belt || '',
+                bio: profile.bio || ''
+            })
+        }
+    }, [profile])
 
     const {
         phone,
@@ -35,15 +49,23 @@ const ProfileForm = ({ createUpdateProfile }) =>{
     }
 
     return(
-        <form onSubmit={e => handleSubmit(e)}>
-            <FormInput label="phone" value={phone} onChange={handleChange}/>
-            <FormInput label="emergency" value={emergency} onChange={handleChange}/>
-            <FormInput label="address" value={address} onChange={handleChange}/>
-            <FormInput label="belt" value={belt} onChange={handleChange}/>
-            <FormInput label="bio" value={bio} onChange={handleChange}/>
-            <button type="submit" >Submit</button>
-        </form>
+        <>
+        {!profileIsLoading &&
+            <form className="form" onSubmit={e => handleSubmit(e)}>
+                <FormInput type="text" label="phone" value={phone} onChange={handleChange}/>
+                <FormInput type="text" label="emergency" value={emergency} onChange={handleChange}/>
+                <FormInput type="text" label="address" value={address} onChange={handleChange}/>
+                <FormInput type="text" label="belt" value={belt} onChange={handleChange}/>
+                <FormInput type="text" label="bio" value={bio} onChange={handleChange}/>
+                <button type="submit" >Submit</button>
+            </form>
+        }
+        </>
     )
 }
 
-export default connect(null, { createUpdateProfile })(ProfileForm)
+const mapStateToProps = createStructuredSelector({
+    profileIsLoading: selectProfileIsLoading
+})
+
+export default connect(mapStateToProps, { createUpdateProfile })(ProfileForm)

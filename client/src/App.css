@@ -252,12 +252,30 @@ img {
 /* Forms */
 .form .form-group {
   margin: 1.2rem 0;
+  position: relative;
+  margin-top: 30px;
 }
 
 .form .form-text {
   display: block;
   margin-top: 0.3rem;
   color: #888;
+}
+
+.form-group label {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding-left: 12px;
+  transition: all .4s;
+  color: #848484;
+}
+
+.form input:focus ~ label,
+label.populated{
+  transform: translateY(-100%);
+  top: 0;
+  padding-left: 0;
 }
 
 .form input[type='text'],
@@ -540,6 +558,7 @@ button {
 /* Modal */
 
 .modal-overlay {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -550,11 +569,17 @@ button {
   animation: fadeIn .5s ease-in-out;
 }
 
+.modal-overlay.active{
+  display: block;
+}
+
 .modal-container {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 600px;
 }
 
 .modal-container .card{
@@ -602,6 +627,7 @@ button {
 
 .students__list {
   display: flex;
+  flex-wrap: wrap;
   padding-top: 30px;
 }
 
@@ -611,6 +637,10 @@ button {
   margin: 10px;
   padding: 29px;
   border-radius: 3px;
+}
+
+.students__item.student__item--active{
+  
 }
 
 /* Mobile Styles */

@@ -17,10 +17,20 @@ const Profile = ({ profile , getCurrentUsersProfile, profileIsLoading, match}) =
 
     return(
         <MainLayout>
+            
             Profile Page
 
+            { !profileIsLoading && profile && <>
+                {profile.user.name && <div>{profile.user.name}</div> }
+                {profile.phone && <div>{profile.phone}</div> }
+                {profile.emergency && <div>{profile.emergency}</div> }
+                {profile.address && <div>{profile.address}</div> }
+                {profile.belt && <div>{profile.belt}</div> }
+                {profile.bio && <div>{profile.bio}</div> }
+            </>}
+
             { !profileIsLoading && !profile && (
-                <Modal initial={true}>
+                <Modal isOpen={true} title="You have not setup your Profile yet">
                     <ProfileForm/>
                 </Modal>)
             }

@@ -11,8 +11,8 @@ import store from './redux/store'
 import Dashboard from './components/dashboard/dashboard.component'
 import PrivateRoute from './components/routing/private-route'
 import Profile from './components/pages/profile/profile.component'
-import MainLayout from './components/layout/main-layout.component'
 import Students from './components/pages/students/students.component'
+import ProfileEdit from './components/pages/profile-edit/prodile-edit.component'
 
 import './App.css';
 
@@ -31,20 +31,11 @@ const App = () =>{
       <Route exact path="/" component={Landing}/>
         <Alert />
         <Switch>
-            <Route exact path="/register" render={()=>(
-                <MainLayout>
-                  <Register />
-                </MainLayout>
-              )
-            } />
-            <Route exact path="/login" render={()=>(
-                <MainLayout>
-                  <Login />
-                </MainLayout>
-              )
-            } />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
             <PrivateRoute admin={true} exact path="/dashboard" component={Dashboard} />
             <PrivateRoute admin={true} exact path="/profile/:id" component={Profile} />
+            <PrivateRoute admin={true} exact path="/profile/edit/:id" component={ProfileEdit} />
             <PrivateRoute exact path="/profile" component={Profile} />
             <PrivateRoute admin={true} exact path="/students" component={Students} />
             

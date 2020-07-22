@@ -79,8 +79,12 @@ export const createUpdateProfile = (formData) => async dispatch => {
         }
 
         const res = await axios.post('api/profile', formData, config)
-        
-        console.log('prpofile created')
+
+        dispatch({
+            type: profileActionTypes.CREATE_PROFILE_SUCCESS,
+            payload: res.data
+        })
+
     } catch (err) {
         console.error('error')
         dispatch({

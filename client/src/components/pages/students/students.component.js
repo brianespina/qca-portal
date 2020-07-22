@@ -2,13 +2,14 @@ import React, { useEffect } from 'react'
 import { createStructuredSelector } from 'reselect'
 import MainLayout from '../../layout/main-layout.component'
 import { connect } from 'react-redux'
-import { getAllProfiles } from '../../../redux/reducers/profile/profile.actions'
+import { getAllProfiles, clearSingleProfile } from '../../../redux/reducers/profile/profile.actions'
 import { selectAllStudents } from '../../../redux/reducers/profile/profile.selectors'
 import Student from '../../student/student.component'
 
-const Students = ({ getAllProfiles, students}) => {
+const Students = ({ getAllProfiles, students, clearSingleProfile}) => {
 
     useEffect(()=>{
+        clearSingleProfile()
         getAllProfiles()
     }, [])
 
@@ -28,4 +29,4 @@ const mapStateToProps = createStructuredSelector({
     students: selectAllStudents
 })
 
-export default connect(mapStateToProps, { getAllProfiles })(Students)
+export default connect(mapStateToProps, { getAllProfiles, clearSingleProfile })(Students)
