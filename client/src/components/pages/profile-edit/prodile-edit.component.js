@@ -4,13 +4,9 @@ import { createStructuredSelector } from 'reselect'
 import ProfileForm from '../../profile-form/profile-form.component'
 import MainLayout from '../../layout/main-layout.component'
 import { getCurrentUsersProfile } from '../../../redux/reducers/profile/profile.actions'
-import { selectProfile } from '../../../redux/reducers/profile/profile.selectors'
+import { selectOneStudent } from '../../../redux/reducers/profile/profile.selectors'
 
-const ProfileEdit = ({ match, getCurrentUsersProfile, profile }) => {
-
-    useEffect(()=>{
-        getCurrentUsersProfile(match.params.id)
-    }, [match.params.id])
+const ProfileEdit = ({ profile }) => {
 
     return(
         <MainLayout>
@@ -20,8 +16,10 @@ const ProfileEdit = ({ match, getCurrentUsersProfile, profile }) => {
 
 }
 
-const mapStateToProps = createStructuredSelector({
-    profile: selectProfile
-})
+const mapStateToProps = (state, ownProps) => {
+    return{
+        profile: selectOneStudent(ownProps.match.params.id)(state)
+    }
+}
 
 export default connect(mapStateToProps, {getCurrentUsersProfile})(ProfileEdit)

@@ -16,3 +16,13 @@ export const selectAllStudents = createSelector(
     selectProfileState,
     profile => profile.profiles
 )
+
+// export const selectOneStudent = createSelector(
+//     selectProfileState,
+//     profile => profile.profiles[1]
+// )
+
+export const selectOneStudent = id => createSelector(
+    selectProfileState,
+    profile => profile.profiles[id]
+)

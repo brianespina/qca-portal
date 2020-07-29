@@ -13,6 +13,7 @@ import PrivateRoute from './components/routing/private-route'
 import Profile from './components/pages/profile/profile.component'
 import Students from './components/pages/students/students.component'
 import ProfileEdit from './components/pages/profile-edit/prodile-edit.component'
+import ProfileAdminView from './components/pages/profile-admin-view/profile-admin-view.component'
 
 import './App.css';
 
@@ -34,7 +35,7 @@ const App = () =>{
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <PrivateRoute admin={true} exact path="/dashboard" component={Dashboard} />
-            <PrivateRoute admin={true} exact path="/profile/:id" component={Profile} />
+            <PrivateRoute admin={true} exact path="/profile/:id" component={ProfileAdminView} />
             <PrivateRoute admin={true} exact path="/profile/edit/:id" component={ProfileEdit} />
             <PrivateRoute exact path="/profile" component={Profile} />
             <PrivateRoute admin={true} exact path="/students" component={Students} />

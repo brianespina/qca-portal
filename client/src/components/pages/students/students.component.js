@@ -13,7 +13,7 @@ const Students = ({ getAllProfiles, students, clearSingleProfile}) => {
         getAllProfiles()
     }, [])
 
-const studentsComponent = students.map( student => <Student key={student._id} profile={student} /> )
+const studentsComponent = students.map( (student, index) => <Student key={student._id} profile={student} index={index}/> )
 
     return(
         <MainLayout>

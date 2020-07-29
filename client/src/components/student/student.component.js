@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Student = ({ profile }) =>{
+const Student = ({ profile, index}) =>{
     
     const { user, phone, emergency, address, belt, bio, _id } = profile
 
@@ -36,10 +36,10 @@ const Student = ({ profile }) =>{
                 </div>
             } 
             { user._id &&
-                <Link to={`profile/${user._id}`} className="btn btn-primary"> View Profile </Link>
+                <Link to={`profile/${index}`} className="btn btn-primary"> View Profile </Link>
             }
             { user._id &&
-                <Link to={`profile/edit/${user._id}`} className="btn btn-primary"> Edit Profile </Link>
+                <Link to={`profile/edit/${index}`} className="btn btn-primary"> Edit Profile </Link>
             }
 
         </div>
