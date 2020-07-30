@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
-import { createStructuredSelector } from 'reselect'
 import ProfileForm from '../../profile-form/profile-form.component'
 import MainLayout from '../../layout/main-layout.component'
 import { getCurrentUsersProfile } from '../../../redux/reducers/profile/profile.actions'

@@ -48,11 +48,12 @@ router.post('/' , [auth, [
         bio,
         facebook,
         twitter,
-        instagram
+        instagram,
+        user
     } = req.body
 
     const profileFields = {}
-    profileFields.user = req.user.id
+    profileFields.user = user && user || req.user.id
     if(phone) profileFields.phone = phone
     if(emergency) profileFields.emergency = emergency
     if(address) profileFields.address = address
@@ -70,7 +71,7 @@ router.post('/' , [auth, [
         })
         if(profile){
             profile = await Profile.findOneAndUpdate({
-                user: req.user.id
+                user: user
             }, { 
                 $set:  profileFields
             }, { 
@@ -83,7 +84,6 @@ router.post('/' , [auth, [
         res.json(profile)
 
     }catch(err){
-        console.error(err.message)
         res.status(500).send('Server Error')
     }
 

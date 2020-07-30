@@ -43,9 +43,11 @@ const ProfileForm = ({ createUpdateProfile, profile, profileIsLoading }) =>{
         })
     }
 
+    let profileId = profile && profile.user._id || false
+
     const handleSubmit = event => {
         event.preventDefault()
-        createUpdateProfile(formData)
+        createUpdateProfile(formData, profileId)
     }
 
     return(

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import setAlert from '../alert/alert.action'
+import { setAlert } from '../alert/alert.action'
 import profileActionTypes from './profile.types'
 
 
@@ -69,7 +69,7 @@ export const getAllStudentProfiles = () => async dispatch => {
     }
 }
 
-export const createUpdateProfile = (formData) => async dispatch => {
+export const createUpdateProfile = (formData, id) => async dispatch => {
 
     try {
         const config = {
@@ -78,12 +78,19 @@ export const createUpdateProfile = (formData) => async dispatch => {
             }
         }
 
-        const res = await axios.post('api/profile', formData, config)
+        const body = {
+            ...formData,
+            user: id || false
+        }
+
+        const res = await axios.post('/api/profile', body, config)
 
         dispatch({
             type: profileActionTypes.CREATE_PROFILE_SUCCESS,
             payload: res.data
         })
+
+        dispatch(setAlert('Profile Updated', 'success'))
 
     } catch (err) {
         console.error('error')
@@ -91,5 +98,11 @@ export const createUpdateProfile = (formData) => async dispatch => {
             type: profileActionTypes.PROFILE_ERROR,
             payload: { msg: err.response.data.message, status: err.response.status }
         })
+
+        const errors = err.response.data.errors
+
+        if(errors){
+            errors.forEach( error => dispatch(setAlert(error.msg, 'danger')))
+        }
     }
 }
