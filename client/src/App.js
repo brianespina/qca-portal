@@ -4,7 +4,6 @@ import { Route, Switch } from 'react-router-dom'
 import Landing from './components/layout/landing.component'
 import Login from './components/auth/login.component'
 import Register from './components/auth/register.component'
-import Alert from './components/layout/alert.component'
 import { loadUser } from './redux/reducers/auth/auth.actions'
 import setAuthToken from './utlils/setAuthToken'
 import store from './redux/store'
@@ -30,7 +29,6 @@ const App = () =>{
   return(
     <Fragment>
       <Route exact path="/" component={Landing}/>
-        <Alert />
         <Switch>
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
