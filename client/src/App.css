@@ -732,6 +732,7 @@ button {
   }
 }
 
+
 @keyframes moveToTop{
   0%{
     opacity: 0;
@@ -772,4 +773,10 @@ button {
   100%{
     opacity: 1;
   }
+}
+
+
+/* Material Custom */
+.MuiTableCell-head {
+  font-weight: 600 !important;
 }
