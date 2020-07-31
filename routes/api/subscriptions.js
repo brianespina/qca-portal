@@ -5,13 +5,22 @@ const { check, validationResult } = require('express-validator')
 
 const Subscription = require('../../models/Subscription')
 const User = require('../../models/User')
-const { route } = require('./profile')
+
  
 //@route GET api/subscriptions/
 //@desc Get all subscriptions
 //@access Private
 router.get('/', auth, async (req, res) => {
-    res.status(200).send('working')
+    try {
+
+        const subscriptions = await Subscription.find()
+        .populate('user', ['avatar', 'name', 'type'])
+        
+        res.json(subscriptions)
+
+    } catch (err) {
+        
+    }
 })
 
 //@route POST api/subscriptions/

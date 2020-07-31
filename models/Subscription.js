@@ -2,13 +2,8 @@ const mongoose = require('mongoose')
 
 const SubscriptionSchema = new mongoose.Schema({
     user: {
-        name: {
-            type: String
-        },
-        id: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'user'
-        }
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user'
     },
     name: {
         type: String

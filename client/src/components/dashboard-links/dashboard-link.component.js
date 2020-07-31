@@ -25,7 +25,9 @@ const DashboardLinks = ({ isAuthenticated, isAdmin, isLoading }) => {
                     <a href="" className="dash-nav__links">Competitions</a>
                 </li>
                 <li>
-                    <a href="" className="dash-nav__links">Subscriptions</a>
+                    <Link to='/subscriptions' className="dash-nav__links">
+                        Subscriptions
+                    </Link>
                 </li>
                 <li>
                     <a href="" className="dash-nav__links">Manage User Roles</a>
