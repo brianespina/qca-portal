@@ -31,8 +31,7 @@ router.post('/', [auth, [
         start,
         end,
         status,
-        paid,
-        paidto
+        paid
     } = req.body
 
     const subscriptionsFields = {}
@@ -41,15 +40,21 @@ router.post('/', [auth, [
     if(end) subscriptionsFields.end = end
     if(status) subscriptionsFields.status = status
     if(paid) subscriptionsFields.paid = paid
-    if(paidto) subscriptionsFields.paidto = paidto
 
     try {
         const currentUser = await User.findById(req.body.user.id).select('-password')
+        const paidTo = await User.findById(req.body.paidto).select('-password')
 
         const newSubscription = new Subscription({
             ...subscriptionsFields,
-            name: currentUser.name,
-            user: req.body.user.id
+            user: {
+                name: currentUser.name,
+                id: req.body.user.id
+            },
+            paidto: {
+                name: paidTo.name,
+                id: req.body.paidto
+            }
         })
 
         const subscription = await newSubscription.save()

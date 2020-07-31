@@ -2,8 +2,13 @@ const mongoose = require('mongoose')
 
 const SubscriptionSchema = new mongoose.Schema({
     user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'user'
+        name: {
+            type: String
+        },
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'user'
+        }
     },
     name: {
         type: String
@@ -29,7 +34,13 @@ const SubscriptionSchema = new mongoose.Schema({
         required: true
     },
     paidto: {
-        type: String
+        name: {
+            type: String
+        },
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'user'
+        }
     }
 })
 
