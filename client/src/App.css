@@ -16,11 +16,11 @@
 }
 
 html{
-  background-color: #f2f2f2;
+  background-color: #F5F5F5;
 }
 
 body {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   color: #333;
@@ -344,7 +344,7 @@ button {
   width: 100%;
   top: 0;
   background-color: var(--white-color);
-  box-shadow: 0 0 10px rgba(0,0,0,.09);
+  color: rgba(0, 0, 0, 0.54);
 }
 .logo{
   max-width: 200px;
@@ -610,7 +610,7 @@ button {
   background: #FFF;
   padding: 70px;
   height: 100vh;
-  box-shadow: 0 0 15px rgba(0,0,0,.09);
+  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
   padding-left: 30px;
   padding-top: 30px;
 }
@@ -633,15 +633,76 @@ button {
 }
 
 .students__item {
-  flex: 0 1 250px;
+  flex-basis: 31.33%;
   background: #FFF;
   margin: 10px;
-  padding: 29px;
   border-radius: 3px;
+  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
+  transition: all .2s;
 }
 
-.students__item.student__item--active{
-  
+
+
+.student__item--top{
+  display: flex;
+  padding: 15px;
+  padding-bottom: 0;
+}
+
+.avatar-container {
+  flex-basis: 30%;
+}
+
+.student__item--details {
+  flex: 1;
+  padding-left: 15px;
+}
+
+.avatar-image{
+  border-radius: 50%;
+}
+
+.student__name {
+  font-weight: 500;
+}
+
+.student__address {
+  color: #acacac;
+}
+
+.student__phone {
+  line-height: ;
+  font-size: 13px;
+  color: #aeacae;
+}
+
+.student__phone svg {
+  width: 17px;
+  margin-bottom: -7px;
+}
+
+.student__button-group {
+  display: flex;
+}
+
+.student__button {
+  display: inline-block;
+  background: #f7f7f7;
+  color: #7d7d7d;
+  font-size: 13px;
+  padding: 8px;
+  transition: all .2s;
+  flex-basis: 50%;
+  text-align: center;
+}
+
+.student__button:hover{
+  background: #ffd3d3;
+}
+
+.student__button:active{
+  background: #DA3642;
+  color: #FFF;
 }
 
 /* Mobile Styles */

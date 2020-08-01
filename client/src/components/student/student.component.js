@@ -1,5 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Avatar from '../avatar/avatar.component'
+import StudentButton from '../student-button/student-button.component'
+
+//icons
+import PhoneIcon from '@material-ui/icons/Phone';
 
 const Student = ({ profile, index}) =>{
     
@@ -7,42 +12,34 @@ const Student = ({ profile, index}) =>{
 
     return(
         <div className="students__item">
-            <div className="student__name">
-                { user.name }
+            <div className="student__item--top">
+                <Avatar url={user.avatar} color={belt}/>
+                <div className="student__item--details">
+                    <div className="student__name">
+                        { user.name }
+                    </div>
+                    <div className="student__address">
+                        { address }
+                    </div>
+                    <div className="student__phone">
+                        <PhoneIcon /> { phone }
+                    </div>
+                </div>
             </div>
-            { phone && 
-                <div className="student__phone">
-                    { phone }
-                </div>
-            }
-            { emergency && 
-                <div className="student__emergency">
-                    { emergency }
-                </div>
-            } 
-            { address && 
-                <div className="student__address">
-                    { address }
-                </div>
-            } 
-            { belt && 
-                <div className="student__address">
-                    { belt }
-                </div>
-            } 
-            { bio && 
-                <div className="student__address">
-                    { bio }
-                </div>
-            } 
-            { user._id &&
-                <Link to={`profile/${index}`} className="btn btn-primary"> View Profile </Link>
-            }
-            { user._id &&
-                <Link to={`profile/edit/${index}`} className="btn btn-primary"> Edit Profile </Link>
-            }
+            
+            <div className="student__item--bottom">
+                <div className="student__button-group">
 
-        </div>
+                    <StudentButton to={`/profile/${index}`}>
+                        View Profile
+                    </StudentButton>
+
+                    <StudentButton to={`/profile/edit/${index}`}>
+                        Edit Profile 
+                    </StudentButton>
+                </div>
+            </div>
+        </div>  
     )
 }
 

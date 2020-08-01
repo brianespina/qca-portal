@@ -8,7 +8,7 @@ const MainNavigation = () =>{
 
     return(
         <>
-            <div className="dash-nav">
+            <div className="dash-nav MuiPaper-elevation1">
                 <div className="dash-nav__container">
                     <Link to="/">
                         <img src={Logo} alt="QCA" width="100" className="logo--small"/>
