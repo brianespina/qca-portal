@@ -656,6 +656,9 @@ button {
 .student__item--details {
   flex: 1;
   padding-left: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .avatar-image{
@@ -704,6 +707,14 @@ button {
   background: #DA3642;
   color: #FFF;
 }
+
+.page-title{
+  border-bottom: solid thin #d0d0d0;
+  padding-bottom: 15px;
+  text-transform: uppercase;
+  color: #424242;
+}
+
 
 /* Mobile Styles */
 @media (max-width: 700px) {

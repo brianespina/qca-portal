@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { getAllProfiles, clearSingleProfile } from '../../../redux/reducers/profile/profile.actions'
 import { selectAllStudents } from '../../../redux/reducers/profile/profile.selectors'
 import Student from '../../student/student.component'
+import PageTitle from '../../page-title/page-title.component'
 
 
 const Students = ({ getAllProfiles, students, clearSingleProfile}) => {
@@ -18,7 +19,9 @@ const Students = ({ getAllProfiles, students, clearSingleProfile}) => {
 
     return(
         <MainLayout>
-            <h2>Students</h2> 
+            <PageTitle>
+                Student
+            </PageTitle>
             <div className="students__list">
                 {studentsComponent}
             </div>
