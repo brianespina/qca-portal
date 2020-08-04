@@ -11,7 +11,10 @@ export const getAllSubscriptions = () => async dispatch => {
         })
 
     } catch (err) {
-        
+        dispatch({
+            type: subscriptionActionTypes.GET_SUBSCRIPTIONS_FAILED,
+            payload: { msg: err.response.data.message, status: err.response.status }
+        })
     }
     
 }
