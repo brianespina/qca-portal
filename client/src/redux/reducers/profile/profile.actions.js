@@ -10,8 +10,6 @@ export const clearSingleProfile = () => dispatch =>{
 }
 
 export const getCurrentUsersProfile = (id) => async dispatch => {
-
-    dispatch(clearSingleProfile())
     
     try {
         let res 

@@ -1,17 +1,13 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
-import { Redirect } from 'react-router-dom'
 import { getCurrentUsersProfile } from '../../redux/reducers/profile/profile.actions'
-import { selectAuthState, selectIsAdmin, selecAuthIsAuthenticated} from '../../redux/reducers/auth/auth.selector'
+import { selectAuthState, selectIsAdmin} from '../../redux/reducers/auth/auth.selector'
 import { selectProfile } from '../../redux/reducers/profile/profile.selectors'
 import MainLayout from '../layout/main-layout.component'
 
-const Dashboard  = ({ auth, getCurrentUsersProfile, isAdmin, isAuthenticated}) => {
+const Dashboard  = ({ auth, getCurrentUsersProfile}) => {
 
-    useEffect(()=>{
-        getCurrentUsersProfile()
-    }, [])
 
     if(auth.loading){
         return <div>page loading...</div>

@@ -8,13 +8,14 @@ import Student from '../../student/student.component'
 import PageTitle from '../../page-title/page-title.component'
 
 
-const Students = ({ getAllProfiles, students, clearSingleProfile}) => {
+const Students = ({ getAllProfiles, students}) => {
 
     const studentsComponent = students.map((student, index) => <Student profile={student} index={index}/>)
 
     useEffect(()=>{
-        clearSingleProfile()
-        getAllProfiles()
+        if(!students.length){
+            getAllProfiles()
+        }
     }, [])
 
     return(

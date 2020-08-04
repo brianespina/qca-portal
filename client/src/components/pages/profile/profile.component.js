@@ -11,7 +11,9 @@ import MainLayout from '../../layout/main-layout.component'
 const Profile = ({ profile , getCurrentUsersProfile, profileIsLoading, match}) =>{
 
     useEffect(()=>{
-        getCurrentUsersProfile(match.params.id)
+        if(!profile){
+            getCurrentUsersProfile(match.params.id)
+        }
     }, [match.params.id])
     
 
