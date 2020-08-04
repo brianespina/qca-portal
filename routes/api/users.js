@@ -91,8 +91,21 @@ router.post(
 //@access Private
 router.get('/', auth, async (req, res) => {
     try {
-        const users = await User.find()
-        res.json(users)
+        const users = await User.find().select('-password')
+        
+        const usersNormalized = users.reduce((obj, user) => {
+
+            const newobj = {
+                ...obj,
+                [user._id]: {...user._doc}
+            }
+
+            obj = newobj
+            return obj
+        }, {})
+
+        res.json(usersNormalized)
+
     } catch (err) {
         console.error(err.message)  
         res.status(500).send('Server Error')
