@@ -667,6 +667,7 @@ button {
 
 .student__name {
   font-weight: 500;
+  padding-bottom: 5px;
 }
 
 .student__address {

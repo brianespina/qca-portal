@@ -20,7 +20,7 @@ const Students = ({ getAllProfiles, students, clearSingleProfile}) => {
     return(
         <MainLayout>
             <PageTitle>
-                Student
+                Members
             </PageTitle>
             <div className="students__list">
                 {studentsComponent}
