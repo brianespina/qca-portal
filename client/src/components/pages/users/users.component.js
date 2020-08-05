@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 
@@ -7,23 +7,35 @@ import { selectUsers } from '../../../redux/reducers/users/users.selectors'
 
 import MainLayout from '../../layout/main-layout.component'
 import PageTitle from '../../page-title/page-title.component'
+import UsersOverview from '../../users-overview/users-overview.component'
 
 
-const Users = ({ getAllUsers, users }) => {
+const Users = ({ getAllUsers, users }) => {  
 
-    const userValues = Object.values(users.users)
-    const usersComponents = userValues.map(user => <div key={user._id}>{user.name}</div>)
+    const [ usersState, setUsersState ] = useState([])
 
     useEffect(()=>{
         getAllUsers()
-    }, [])
+        setUsersState(Object.values(users.users))
+    }, [users.loading])
+
+    const handleFilter = by => () =>{
+        if(by){
+            setUsersState(Object.values(users.users).filter(user => user.type === by))
+        }else{
+            setUsersState(Object.values(users.users))
+        } 
+    }
 
     return (
         <MainLayout>
             <PageTitle>
                 Users
             </PageTitle>
-            {usersComponents}
+            <div onClick={handleFilter()}>All</div>
+            <div onClick={handleFilter('admin')}>Admin</div>
+            <div onClick={handleFilter('student')}>Student</div>
+            <UsersOverview users={usersState}/>
         </MainLayout>
     )
 }
