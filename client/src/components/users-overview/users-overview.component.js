@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
+import UserRolesItem from '../user-roles-item/user-roles-item.component'
 
 const UsersOverview = ({ users }) => {
 
-    const usersComponents = users.map(user => <div key={user._id}>{user.name}</div>)
+    const usersComponents = users.map(user => <UserRolesItem key={user._id} user={user} />)
     
     return(
         <div className="usersOverview">

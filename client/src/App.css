@@ -716,6 +716,28 @@ button {
   color: #424242;
 }
 
+.user-roles-item:nth-child(2n) {
+  background: #eaeaea;
+}
+
+.user-roles-item {
+  display: flex;
+  padding: 10px;
+}
+
+.user-roles-item__name {
+  flex-basis: 40%;
+}
+
+.filter-container{
+  display: flex;
+  justify-content: left;
+}
+
+.filter-container > div{
+  padding: 5px;
+  cursor: pointer;
+}
 
 /* Mobile Styles */
 @media (max-width: 700px) {

@@ -13,9 +13,7 @@ const Students = ({ getAllProfiles, students}) => {
     const studentsComponent = students.map((student, index) => <Student profile={student} index={index}/>)
 
     useEffect(()=>{
-        if(!students.length){
-            getAllProfiles()
-        }
+        getAllProfiles()
     }, [])
 
     return(

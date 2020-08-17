@@ -32,9 +32,11 @@ const Users = ({ getAllUsers, users }) => {
             <PageTitle>
                 Users
             </PageTitle>
-            <div onClick={handleFilter()}>All</div>
-            <div onClick={handleFilter('admin')}>Admin</div>
-            <div onClick={handleFilter('student')}>Student</div>
+            <div className="filter-container">
+                <div onClick={handleFilter()}>All</div>
+                <div onClick={handleFilter('admin')}>Admin</div>
+                <div onClick={handleFilter('student')}>Student</div>
+            </div>
             <UsersOverview users={usersState}/>
         </MainLayout>
     )
