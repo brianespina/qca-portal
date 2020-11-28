@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import Avatar from '../avatar/avatar.component'
 import StudentButton from '../student-button/student-button.component'
 
@@ -11,6 +10,7 @@ const Student = ({ profile, index}) =>{
     const { user, phone, emergency, address, belt, bio, _id } = profile
 
     return(
+        user &&
         <div className="students__item">
             <div className="student__item--top">
                 <Avatar url={user.avatar} color={belt}/>
