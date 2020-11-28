@@ -10,11 +10,11 @@ import PageTitle from '../../page-title/page-title.component'
 
 const Students = ({ getAllProfiles, students}) => {
 
-    const studentsComponent = students.map((student, index) => <Student profile={student} index={index}/>)
+    const studentsComponent = students.map((student, index) => <Student profile={student} index={index} key={index}/>)
 
     useEffect(()=>{
         getAllProfiles()
-    }, [])
+    }, [students])
 
     return(
         <MainLayout>
