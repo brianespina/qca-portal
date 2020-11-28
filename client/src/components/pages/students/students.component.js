@@ -14,7 +14,7 @@ const Students = ({ getAllProfiles, students}) => {
 
     useEffect(()=>{
         getAllProfiles()
-    }, [students])
+    }, [getAllProfiles])
 
     return(
         <MainLayout>
