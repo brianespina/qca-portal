@@ -552,6 +552,12 @@ button {
   margin-bottom: 40px;
 }
 
+.floating-form-wrapper .card--floating{
+  top: 50%;
+  position: relative;
+  transform: translateY(-50%);
+}
+
 .card--floating{
   margin: auto !important;
 }
@@ -675,7 +681,6 @@ button {
 }
 
 .student__phone {
-  line-height: ;
   font-size: 13px;
   color: #aeacae;
 }
@@ -737,6 +742,11 @@ button {
 .filter-container > div{
   padding: 5px;
   cursor: pointer;
+}
+
+.floating-form-wrapper{
+  height: 100vh;
+  position: relative;
 }
 
 /* Mobile Styles */

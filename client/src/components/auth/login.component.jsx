@@ -29,8 +29,7 @@ const Login = ({ login, isAuthenticated, isAdmin, loading}) => {
     
 
     return(
-        <>  
-            
+        <div class="floating-form-wrapper">  
             {!loading && isAuthenticated && <Redirect to='/profile'/>}
 
             <Card classes="card--small animate-to-top card--floating">
@@ -58,7 +57,7 @@ const Login = ({ login, isAuthenticated, isAdmin, loading}) => {
                 </p>
             </Card>
             
-        </>
+        </div>
         
     )
 }
