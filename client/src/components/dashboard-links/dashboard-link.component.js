@@ -18,7 +18,7 @@ const DashboardLinks = ({ isAuthenticated, isAdmin, isLoading }) => {
                         Members
                     </Link>
                 </li>
-                <li>
+                {/* <li>
                     <a href="" className="dash-nav__links">Anouncments</a>
                 </li>
                 <li>
@@ -33,7 +33,7 @@ const DashboardLinks = ({ isAuthenticated, isAdmin, isLoading }) => {
                     <Link to='/users' className="dash-nav__links">
                         Manage User Roles
                     </Link>
-                </li>
+                </li> */}
             </ul>
         )
     }

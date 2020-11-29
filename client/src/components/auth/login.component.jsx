@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import { Link, withRouter, Redirect } from 'react-router-dom'
+import Alert from '../layout/alert.component'
 import { connect } from 'react-redux'
 import { login } from '../../redux/reducers/auth/auth.actions'  
 import { selecAuthIsAuthenticated, selectIsAdmin, selectIsLoading, selectAuthState } from '../../redux/reducers/auth/auth.selector'  
@@ -33,6 +34,7 @@ const Login = ({ login, isAuthenticated, isAdmin, loading}) => {
             {!loading && isAuthenticated && <Redirect to='/profile'/>}
 
             <Card classes="card--small animate-to-top card--floating">
+                <Alert />
                 <h1 className="large text-primary">Sign In</h1>
                 <p className="lead"><i className="fas fa-user"></i> Sign in to your account</p>
                 <form className="form" onSubmit={e => handleSubmit(e)}>

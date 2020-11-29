@@ -10,7 +10,7 @@ const Dashboard  = ({ auth, getCurrentUsersProfile}) => {
 
 
     if(auth.loading){
-        return <div>page loading...</div>
+        return <div>...</div>
     }
 
     return (
