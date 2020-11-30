@@ -39,7 +39,7 @@ export const clearAllProfile = () => dispatch => {
 
 export const getAllProfiles = () => async dispatch => {
     try {
-        const res = await axios.get('api/profile')
+        const res = await axios.get('/api/profile')
         
         dispatch({
             type: profileActionTypes.GET_PROFILE_SUCCESS,
