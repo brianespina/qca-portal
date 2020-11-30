@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { createStructuredSelector } from 'reselect'
+
+// Redux
 import { selectOneStudent } from '../../../redux/reducers/profile/profile.selectors'
 import { getAllProfiles } from '../../../redux/reducers/profile/profile.actions'
-import PageTitle from '../../page-title/page-title.component'
 
+// Components
+import PageTitle from '../../page-title/page-title.component'
 import MainLayout from '../../layout/main-layout.component'
 
 const ProfileAdminView = ({ profile, getAllProfiles}) =>{
@@ -36,10 +38,6 @@ const ProfileAdminView = ({ profile, getAllProfiles}) =>{
     )
 }
 
-const mapDispatchtoProps = {
-    getAllProfiles
-}
-
 const mapStateToProps = (state, ownProps) => {
     return{
         profile: selectOneStudent(ownProps.match.params.id)(state)
@@ -47,4 +45,4 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 
-export default connect(mapStateToProps, mapDispatchtoProps)(ProfileAdminView)
+export default connect(mapStateToProps, {getAllProfiles})(ProfileAdminView)
