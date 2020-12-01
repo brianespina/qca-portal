@@ -6,6 +6,7 @@ import { getAllProfiles, clearSingleProfile } from '../../../redux/reducers/prof
 import { selectAllStudents, selectProfileIsLoading } from '../../../redux/reducers/profile/profile.selectors'
 import Student from '../../student/student.component'
 import PageTitle from '../../page-title/page-title.component'
+import Loader from '../../loader/loader.component'
 
 
 const Students = ({ getAllProfiles, students, isLoading}) => {
@@ -22,7 +23,7 @@ const Students = ({ getAllProfiles, students, isLoading}) => {
                 Members
             </PageTitle>
             <div className="students__list">
-                {isLoading ? <div>Loading...</div> : studentsComponent}
+                {isLoading ? <Loader/> : studentsComponent}
             </div>
         </MainLayout>
     )
