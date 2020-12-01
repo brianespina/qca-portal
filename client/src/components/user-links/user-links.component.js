@@ -12,14 +12,14 @@ const UserLinks = ({ auth, isAdmin, logout }) => {
 
     const authLinks = (
         <ul>
-            { isAdmin &&
+            {/* { isAdmin &&
                 <li>
                     <NavLink exact to="/dashboard" activeClassName="selected">
                         <i className="fas fa-user"></i>{' '} 
                         <span className="hide-sm">Dashboard</span>
                     </NavLink>
                 </li>
-            }
+            } */}
             <li><NavLink exact to="/profile"><i className="fas fa-user"></i>{' '}  Profile</NavLink></li>
             <li>
                 <a onClick={logout} href="#!">
