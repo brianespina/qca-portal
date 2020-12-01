@@ -40,7 +40,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     }
 
     return(
-        <Card classes="card--small animate-to-top card--floating">
+        <Card classes="card--small card--floating">
             <h1 className="large text-primary">Sign Up</h1>
             <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
             <form className="form" onSubmit={e => handleSubmit(e)}>

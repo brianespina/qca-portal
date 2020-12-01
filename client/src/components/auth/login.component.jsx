@@ -32,7 +32,7 @@ const Login = ({ login, isAuthenticated, isAdmin, loading}) => {
         <div className="floating-form-wrapper">  
             {!loading && isAuthenticated && <Redirect to='/profile'/>}
 
-            <Card classes="card--small animate-to-top card--floating">
+            <Card classes="card--small card--floating">
                 <Alert />
                 <h1 className="large text-primary">Sign In</h1>
                 <p className="lead"><i className="fas fa-user"></i> Sign in to your account</p>
