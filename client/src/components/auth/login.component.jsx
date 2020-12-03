@@ -1,9 +1,9 @@
-import React, { Fragment, useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Link, withRouter, Redirect } from 'react-router-dom'
 import Alert from '../layout/alert.component'
 import { connect } from 'react-redux'
 import { login } from '../../redux/reducers/auth/auth.actions'  
-import { selecAuthIsAuthenticated, selectIsAdmin, selectIsLoading, selectAuthState } from '../../redux/reducers/auth/auth.selector'  
+import { selecAuthIsAuthenticated, selectIsAdmin, selectIsLoading } from '../../redux/reducers/auth/auth.selector'  
 import { createStructuredSelector } from 'reselect'
 
 import Card from '../card/card.component'
