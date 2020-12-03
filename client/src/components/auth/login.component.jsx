@@ -7,6 +7,7 @@ import { selecAuthIsAuthenticated, selectIsAdmin, selectIsLoading, selectAuthSta
 import { createStructuredSelector } from 'reselect'
 
 import Card from '../card/card.component'
+import Loader from 'react-loader-spinner'
 
 const Login = ({ login, isAuthenticated, isAdmin, loading}) => {
 
@@ -50,7 +51,9 @@ const Login = ({ login, isAuthenticated, isAdmin, loading}) => {
                         onChange={e => handleCange(e)}
                     />
                     </div>
-                    <input type="submit" className="btn btn-primary" value="Login" />
+                    {loading 
+                    ? <Loader type="ThreeDots" color="#DA3642" height={80} width={80} />
+                    : <input type="submit" className="btn btn-primary" value="Login" />}	
                 </form>
                 <p className="my-1">
                     Don't have an account? <Link to="/register">Sign up</Link>

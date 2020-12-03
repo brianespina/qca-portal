@@ -25,6 +25,12 @@ const authReducer = ( state = INITIAL_STATE, action ) => {
                 loading: false
             }
         
+        case authActionTypes.LOGIN_LOADING:
+            return{
+                ...state,
+                loading: true
+            }
+        
         case authActionTypes.REGISTER_FAIL:
         case authActionTypes.AUTH_ERROR:
         case authActionTypes.LOGIN_FAIL:

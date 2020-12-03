@@ -57,6 +57,11 @@ export const register = ({ name, email, type, password }) => async dispatch => {
 }
 
 export const login = (email, password) => async dispatch => {
+
+    dispatch({
+        type: authActionTypes.LOGIN_LOADING
+    })
+
     const config = {
         headers: {
             'Content-Type': 'application/json'
