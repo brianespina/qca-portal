@@ -8,6 +8,7 @@ import { createStructuredSelector } from 'reselect'
 
 import Card from '../card/card.component'
 import Loader from 'react-loader-spinner'
+import Alert from '../layout/alert.component'
 
 
 const Register = ({ setAlert, register, isAuthenticated, loading }) => {
@@ -42,6 +43,7 @@ const Register = ({ setAlert, register, isAuthenticated, loading }) => {
 
     return(
         <Card classes="card--small card--floating">
+            <Alert />
             <h1 className="large text-primary">Sign Up</h1>
             <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
             <form className="form" onSubmit={e => handleSubmit(e)}>
