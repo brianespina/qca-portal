@@ -56,18 +56,6 @@ const authReducer = ( state = INITIAL_STATE, action ) => {
                 },
                 loading: false
             }
-        
-        case authActionTypes.AUTH_ERROR:
-            localStorage.removeItem('token')
-            return{
-                ...state,
-                token: null,
-                isAuthenticated: false,
-                loading: false,
-                user:{
-                    type: null
-                }
-            }
 
         default:
             return {

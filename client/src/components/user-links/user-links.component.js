@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
-import { selecAuthIsAuthenticated, selectAuthState, selectIsAdmin } from '../../redux/reducers/auth/auth.selector'
+import { selectAuthState, selectIsAdmin } from '../../redux/reducers/auth/auth.selector'
 import { logout } from '../../redux/reducers/auth/auth.actions'
 
 const UserLinks = ({ auth, isAdmin, logout }) => {
