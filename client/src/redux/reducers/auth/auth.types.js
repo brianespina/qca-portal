@@ -6,7 +6,8 @@ const authActionTypes = {
     LOGIN_SUCCESS: 'LOGIN_SUCCESS',
     LOGIN_FAIL: 'LOGIN_FAIL',
     LOG_OUT: 'LOG_OUT',
-    LOGIN_LOADING: 'LOGIN_LOADING'
+    LOGIN_LOADING: 'LOGIN_LOADING',
+    REGISTER_LOADING: 'REGISTER_LOADING'
 }
 
 export default authActionTypes

@@ -26,6 +26,7 @@ const authReducer = ( state = INITIAL_STATE, action ) => {
             }
         
         case authActionTypes.LOGIN_LOADING:
+        case authActionTypes.REGISTER_LOADING:
             return{
                 ...state,
                 loading: true

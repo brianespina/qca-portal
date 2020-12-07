@@ -3,13 +3,14 @@ import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setAlert } from '../../redux/reducers/alert/alert.action'
 import { register } from '../../redux/reducers/auth/auth.actions'
-import { selecAuthIsAuthenticated } from '../../redux/reducers/auth/auth.selector'  
+import { selecAuthIsAuthenticated, selectIsLoading } from '../../redux/reducers/auth/auth.selector'  
 import { createStructuredSelector } from 'reselect'
 
 import Card from '../card/card.component'
+import Loader from 'react-loader-spinner'
 
 
-const Register = ({ setAlert, register, isAuthenticated }) => {
+const Register = ({ setAlert, register, isAuthenticated, loading }) => {
 
     const [formData, setFormData] = useState({
         name: '',
@@ -74,7 +75,9 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                     onChange={e => handleCange(e)}
                 />
                 </div>
-                <input type="submit" className="btn btn-primary" value="Register" />
+                {loading 
+                ? <Loader type="ThreeDots" color="#DA3642" height={80} width={80} />
+                : <input type="submit" className="btn btn-primary" value="Register" />}	
             </form>
             <p className="my-1">
                 Already have an account? <Link to="/login">Sign In</Link>
@@ -89,7 +92,8 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = createStructuredSelector({
-    isAuthenticated: selecAuthIsAuthenticated
+    isAuthenticated: selecAuthIsAuthenticated,
+    loading: selectIsLoading
 })
 
 export default connect(mapStateToProps, mapDispatchToProps )(Register)
