@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -207,14 +208,14 @@ img {
   color: #fff;
 }
 
-.btn-white,
+/* .btn-white,
 .bg-white,
 .badge-white,
 .alert-white {
   background: #fff;
   color: #333;
   border: #ccc solid 1px;
-}
+} */
 
 .btn:hover {
   opacity: 0.8;

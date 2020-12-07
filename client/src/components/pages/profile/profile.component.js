@@ -21,8 +21,6 @@ const ProfilePage = ({ profile , getCurrentUsersProfile, profileIsLoading, match
 
     return(
         <MainLayout>
-            
-            Profile Page
 
             {profileIsLoading 
             ? <Loader />
