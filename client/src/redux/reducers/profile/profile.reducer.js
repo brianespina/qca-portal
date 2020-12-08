@@ -5,6 +5,7 @@ const INITIAL_STATE = {
     profiles: [],
     repos: [],
     loading: true,
+    singleProfileLoading: true,
     error: {}
 }
 
@@ -17,7 +18,7 @@ function profileReducer(state = INITIAL_STATE, action){
             return {
                 ...state,
                 profile: payload,
-                loading: false
+                singleProfileLoading: false
             }
 
         case profileActionTypes.PROFILE_ERROR:

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import { getCurrentUsersProfile } from '../../../redux/reducers/profile/profile.actions'
-import { selectProfile, selectProfileIsLoading } from '../../../redux/reducers/profile/profile.selectors'
+import { selectProfile, selectSingleProfileIsLoading } from '../../../redux/reducers/profile/profile.selectors'
 
 import Modal from '../../modal/modal.component'
 import ProfileForm from '../../profile-form/profile-form.component'
@@ -10,7 +10,7 @@ import MainLayout from '../../layout/main-layout.component'
 import Loader from '../../loader/loader.component'
 import Profile from '../../profile/profile.component'
 
-const ProfilePage = ({ profile , getCurrentUsersProfile, profileIsLoading, match}) =>{
+const ProfilePage = ({ profile , getCurrentUsersProfile, match, singleProfileIsLoading}) =>{
 
     useEffect(()=>{
         if(!profile){
@@ -22,11 +22,11 @@ const ProfilePage = ({ profile , getCurrentUsersProfile, profileIsLoading, match
     return(
         <MainLayout>
 
-            {profileIsLoading 
+            {singleProfileIsLoading 
             ? <Loader />
             : <Profile data={profile}/>}
 
-            {profileIsLoading && !profile && 
+            {singleProfileIsLoading && !profile && 
                 <Modal>
                     <ProfileForm />
                 </Modal>
@@ -38,7 +38,7 @@ const ProfilePage = ({ profile , getCurrentUsersProfile, profileIsLoading, match
 
 const mapStateToProps = createStructuredSelector({
     profile: selectProfile,
-    profileIsLoading: selectProfileIsLoading
+    singleProfileIsLoading: selectSingleProfileIsLoading
 })
 
 export default connect(mapStateToProps, { getCurrentUsersProfile })(ProfilePage)
