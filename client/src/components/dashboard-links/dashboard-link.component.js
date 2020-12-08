@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { selecAuthIsAuthenticated, selectIsAdmin, selectIsLoading} from '../../redux/reducers/auth/auth.selector'
 import { createStructuredSelector } from 'reselect'
+import { UsersIcon } from '../icons/icons.component'
 
 const DashboardLinks = ({ isAuthenticated, isAdmin, isLoading }) => {
 
@@ -14,9 +15,9 @@ const DashboardLinks = ({ isAuthenticated, isAdmin, isLoading }) => {
         return(
             <ul className="dash-nav__main-list">
                 <li>
-                    <Link to='/students' className="dash-nav__links">
-                        Members
-                    </Link>
+                    <NavLink exact to='/students' className="main-nav-button">
+                        <UsersIcon className="icon-left-sm"/> Members
+                    </NavLink>
                 </li>
                 {/* <li>
                     <a href="" className="dash-nav__links">Anouncments</a>

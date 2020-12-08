@@ -6,6 +6,9 @@ import { createStructuredSelector } from 'reselect'
 import { selectAuthState, selectIsAdmin } from '../../redux/reducers/auth/auth.selector'
 import { logout } from '../../redux/reducers/auth/auth.actions'
 
+// Icons
+import {UserIcon, LogoutIcon} from '../icons/icons.component'
+
 const UserLinks = ({ auth, isAdmin, logout }) => {
 
     const { isAuthenticated, loading} = auth
@@ -13,19 +16,19 @@ const UserLinks = ({ auth, isAdmin, logout }) => {
     const authLinks = (
         <ul>
             {/* { isAdmin &&
-                <li>
+                <li>n
                     <NavLink exact to="/dashboard" activeClassName="selected">
                         <i className="fas fa-user"></i>{' '} 
                         <span className="hide-sm">Dashboard</span>
                     </NavLink>
                 </li>
             } */}
-            <li><NavLink exact to="/profile"><i className="fas fa-user"></i>{' '}  Profile</NavLink></li>
-            <li>
-                <a onClick={logout} href="#!">
-                <i className="fas fa-sign-out-alt"></i>{' '}
+            <NavLink exact to="/profile" className="main-nav-button">
+                <UserIcon className="icon-left-sm"/>{' '}  Profile
+            </NavLink>
+            <a onClick={logout} href="#!" className="main-nav-button">
+                <LogoutIcon className="icon-left-sm"/>{' '}
                 <span className="hide-sm">Log Out</span></a>
-            </li>
         </ul>
     )
 

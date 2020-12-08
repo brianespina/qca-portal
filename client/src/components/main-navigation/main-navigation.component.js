@@ -8,10 +8,10 @@ const MainNavigation = () =>{
 
     return(
         <>
-            <div className="dash-nav MuiPaper-elevation1">
+            <div className="h-screen p-2 bg-white shadow w-1/4">
                 <div className="dash-nav__container">
                     <Link to="/">
-                        <img src={Logo} alt="QCA" width="100" className="logo--small"/>
+                        <img src={Logo} alt="QCA" width="100" className="block mb-4 w-1/4"/>
                     </Link>
                     
                     <DashboardLinks />

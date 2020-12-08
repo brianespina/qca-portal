@@ -88,58 +88,6 @@ span.dissabled {
   color: #bfbfbf;
 }
 
-/* Padding */
-.p {
-  padding: 0.5rem;
-}
-.p-1 {
-  padding: 1rem;
-}
-.p-2 {
-  padding: 2rem;
-}
-.p-3 {
-  padding: 3rem;
-}
-.py {
-  padding: 0.5rem 0;
-}
-.py-1 {
-  padding: 1rem 0;
-}
-.py-2 {
-  padding: 2rem 0;
-}
-.py-3 {
-  padding: 3rem 0;
-}
-
-/* Margin */
-.m {
-  margin: 0.5rem;
-}
-.m-1 {
-  margin: 1rem;
-}
-.m-2 {
-  margin: 2rem;
-}
-.m-3 {
-  margin: 3rem;
-}
-.my {
-  margin: 0.5rem 0;
-}
-.my-1 {
-  margin: 1rem 0;
-}
-.my-2 {
-  margin: 2rem 0;
-}
-.my-3 {
-  margin: 3rem 0;
-}
-
 .btn {
   display: inline-block;
   background: var(--light-color);
@@ -621,15 +569,6 @@ button {
   display: flex;
 }
 
-.dash-nav {
-  background: #FFF;
-  padding: 70px;
-  height: 100vh;
-  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
-  padding-left: 30px;
-  padding-top: 30px;
-}
-
 .layout-right{
   flex: 1;  
   padding: 44px;
@@ -893,4 +832,16 @@ button {
 /* Material Custom */
 .MuiTableCell-head {
   font-weight: 600 !important;
+}
+
+.main-nav-button{
+  @apply px-2 py-1 block mb-1 rounded;
+}
+
+.main-nav-button.active{
+  @apply bg-gray-100;
+}
+
+.icon-left-sm{
+  @apply w-4 inline pb-1;
 }
