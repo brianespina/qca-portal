@@ -21,7 +21,7 @@ const Profile = ({data}) => {
                 Full name
                 </dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {user.name}
+                    {user.name || <span className="dissabled">N/A</span>} 
                 </dd>
             </div>
             <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -29,7 +29,7 @@ const Profile = ({data}) => {
                 Phone number
                 </dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                {phone}
+                {phone || <span className="dissabled">N/A</span>}
                 </dd>
             </div>
             <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -37,7 +37,7 @@ const Profile = ({data}) => {
                 Emergency number
                 </dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                {emergency}
+                {emergency || <span className="dissabled">N/A</span>}
                 </dd>
             </div>
             <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -45,7 +45,7 @@ const Profile = ({data}) => {
                 Email
                 </dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                {user.email}
+                {user.email || <span className="dissabled">N/A</span>}
                 </dd>
             </div>
             <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -53,7 +53,7 @@ const Profile = ({data}) => {
                 Address
                 </dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                {address}
+                {address || <span className="dissabled">N/A</span>}
                 </dd>
             </div>
             <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -61,7 +61,7 @@ const Profile = ({data}) => {
                 Belt
                 </dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                {belt}
+                {belt || <span className="dissabled">N/A</span>}
                 </dd>
             </div>
             <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -69,7 +69,7 @@ const Profile = ({data}) => {
                 About
                 </dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                {bio}
+                {bio || <span className="dissabled">N/A</span>}
                 </dd>
             </div>
             </dl>

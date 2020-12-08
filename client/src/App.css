@@ -84,6 +84,10 @@ img {
   color: var(--dark-color);
 }
 
+span.dissabled {
+  color: #bfbfbf;
+}
+
 /* Padding */
 .p {
   padding: 0.5rem;
