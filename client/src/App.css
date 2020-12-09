@@ -599,8 +599,7 @@ button {
 
 .student__item--top{
   display: flex;
-  padding: 15px;
-  padding-bottom: 0;
+  padding: 20px;
 }
 
 .avatar-container {
@@ -644,22 +643,9 @@ button {
 
 .student__button {
   display: inline-block;
-  background: #f7f7f7;
   color: #7d7d7d;
-  font-size: 13px;
-  padding: 8px;
-  transition: all .2s;
   flex-basis: 50%;
   text-align: center;
-}
-
-.student__button:hover{
-  background: #ffd3d3;
-}
-
-.student__button:active{
-  background: #DA3642;
-  color: #FFF;
 }
 
 .page-title{
@@ -671,6 +657,10 @@ button {
 
 .user-roles-item:nth-child(2n) {
   background: #eaeaea;
+}
+
+.student__button-group a:first-child {
+  border-right: 1px solid #e2e2e2;
 }
 
 .user-roles-item {
@@ -835,7 +825,7 @@ button {
 }
 
 .main-nav-button{
-  @apply px-2 py-1 block mb-1 rounded;
+  @apply px-2 py-1 block mb-1 rounded;  
 }
 
 .main-nav-button.active{

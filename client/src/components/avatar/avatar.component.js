@@ -1,23 +1,9 @@
 import React from 'react'
 
-const Avatar = ({ url, color }) => {
-
-    const normalizedColor = color.toLowerCase()
-
-    let borderColor
-    if(normalizedColor === 'blue') borderColor = '#3498db'
-    if(normalizedColor === 'white') borderColor = '#fff'
-
-    let style = {
-        border: 'solid',
-        borderColor: borderColor
-    }
-
-    
-
+const Avatar = ({ url }) => {
     return(
-        <div className="avatar-container">
-            <img src={url} alt="" className="avatar-image" style={style}/>
+        <div className="">
+            <img src={url} alt="" className="h-10 w-10 rounded-full"/>
         </div>
     )
 }
