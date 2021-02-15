@@ -3,7 +3,6 @@ import Avatar from '../avatar/avatar.component'
 import StudentButton from '../student-button/student-button.component'
 
 //icons
-import PhoneIcon from '@material-ui/icons/Phone';
 import { PencilIcon, EyeIcon } from '../icons/icons.component'
 
 const Student = ({ profile, index}) =>{

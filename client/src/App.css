@@ -649,10 +649,15 @@ button {
 }
 
 .page-title{
-  border-bottom: solid thin #d0d0d0;
   padding-bottom: 15px;
   text-transform: uppercase;
   color: #424242;
+  display: inline-block;
+}
+
+.title-bar {
+  border-bottom: solid thin #d0d0d0;
+  font-weight: bold;
 }
 
 .user-roles-item:nth-child(2n) {
@@ -834,4 +839,16 @@ button {
 
 .icon-left-sm{
   @apply w-4 inline pb-1;
+}
+
+.icon-left-md{
+  @apply w-6 inline pb-1;
+}
+
+.grid-view{
+  @apply grid grid-cols-3 gap-7 mt-10;
+}
+
+.list-view{
+  @apply grid grid-cols-1 gap-0 mt-10;
 }

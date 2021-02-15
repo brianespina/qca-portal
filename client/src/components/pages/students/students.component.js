@@ -22,7 +22,7 @@ const Students = ({ getAllProfiles, students, isLoading}) => {
             <PageTitle>
                 Members
             </PageTitle>
-            <div className="grid grid-cols-3 gap-7 mt-10">
+            <div className="grid-view">
                 {isLoading ? <Loader/> : studentsComponent}
             </div>
         </MainLayout>
