@@ -1,17 +1,15 @@
 import React from 'react'
-import { Link, useHistory  } from 'react-router-dom'
-import { BackIcon } from '../icons/icons.component'
+import BackButton from '../back-button/back-button.component'
 
-const PageTitle = ({ children, backLink='#' }) => {
-    let history = useHistory()
+const PageTitle = ({children, backbutton}) => {
+
     return(
         <div class="title-bar">
-            <span onClick={()=> history.goBack()} ><BackIcon className='icon-left-md text-gray-600 mr-2'/></span>
+            {backbutton && <BackButton/>}
             <h2 className="page-title">
                 { children }
             </h2>
         </div>
-        
     )
 }
 
