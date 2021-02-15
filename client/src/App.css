@@ -843,6 +843,14 @@ button {
   margin-bottom: 10px;
 }
 
+.button {
+  font-size: 15px;
+  padding: 1px 15px;
+  border: solid 1px #757575;
+  cursor: pointer;
+  @apply rounded-full;
+}
+
 
 @keyframes moveToTop{
   0%{

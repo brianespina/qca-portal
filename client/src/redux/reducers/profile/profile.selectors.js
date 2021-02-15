@@ -29,7 +29,7 @@ export const selectAllStudents = createSelector(
 
 export const selectOneStudent = id => createSelector(
     selectProfileState,
-    profile => profile.profiles[id]
+    profile => profile.profiles.find(prof => prof._id === id)
 )
 
 export const selectView = createSelector(

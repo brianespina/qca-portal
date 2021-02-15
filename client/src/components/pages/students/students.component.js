@@ -12,7 +12,7 @@ import StudentFilters from '../../students-filters/student-filters.component'
 
 const Students = ({ getAllProfiles, students, isLoading, view}) => {
 
-    const studentsComponent = students.map((student, index) => <Student profile={student} index={index} key={index}/>)
+    const studentsComponent = students.map((student, index) => <Student profile={student} id={student._id} key={index}/>)
 
     useEffect(()=>{
         getAllProfiles()

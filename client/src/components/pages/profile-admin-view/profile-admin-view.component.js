@@ -9,6 +9,7 @@ import { getAllProfiles } from '../../../redux/reducers/profile/profile.actions'
 import PageTitle from '../../page-title/page-title.component'
 import MainLayout from '../../layout/main-layout.component'
 import { BookmarkIcon, InfoIcon, NoteIcon } from '../../icons/icons.component'
+import Button from '../../button/button.component'
 
 const ProfileAdminView = ({ profile, getAllProfiles}) =>{
 
@@ -30,7 +31,10 @@ const ProfileAdminView = ({ profile, getAllProfiles}) =>{
                     <div>
                         <div className="flex bg-white p-5 rounded-lg shadow overflow-hidden mt-3">
                             {profile.user.avatar && <img className="rounded-full profile-photo-admin" src={profile.user.avatar} /> }
-                            {profile.user.name && <div className="profile-name"><span>{profile.user.name}</span></div> }
+                            {profile.user.name && <div className="profile-name flex-1"><span>{profile.user.name}</span></div> }
+                            <div className="flex flex-col justify-center">
+                                {/* <Button title="Edit" to={`/profile/edit/${index}`} /> */}
+                            </div>
                         </div>
 
                         <div className="bg-white p-5 rounded-lg shadow overflow-hidden mt-3">

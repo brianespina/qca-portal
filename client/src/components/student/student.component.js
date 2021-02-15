@@ -5,7 +5,7 @@ import StudentButton from '../student-button/student-button.component'
 //icons
 import { PencilIcon, EyeIcon } from '../icons/icons.component'
 
-const Student = ({ profile, index}) =>{
+const Student = ({ profile, id}) =>{
     
     const { user, phone, emergency, address, belt, bio, _id } = profile
 
@@ -27,11 +27,11 @@ const Student = ({ profile, index}) =>{
             <div className="student__item--bottom">
                 <div className="student__button-group text-sm">
 
-                    <StudentButton to={`/profile/${index}`} className="border-r">
+                    <StudentButton to={`/profile/${id}`} className="border-r">
                         <EyeIcon className="icon-left-sm text-gray-400 mr-2"/> View Profile
                     </StudentButton>
 
-                    <StudentButton to={`/profile/edit/${index}`}>
+                    <StudentButton to={`/profile/edit/${id}`}>
                         <PencilIcon className="icon-left-sm text-gray-400 mr-2"/> Edit Profile 
                     </StudentButton>
                 </div>
