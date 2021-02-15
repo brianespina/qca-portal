@@ -848,7 +848,14 @@ button {
   padding: 1px 15px;
   border: solid 1px #757575;
   cursor: pointer;
+  transition: all .4s ease;
   @apply rounded-full;
+}
+
+.button:hover {
+  background: #da3642;
+  color: #FFF;
+  border: #da3642;
 }
 
 

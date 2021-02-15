@@ -10,6 +10,7 @@ import PageTitle from '../../page-title/page-title.component'
 import MainLayout from '../../layout/main-layout.component'
 import { BookmarkIcon, InfoIcon, NoteIcon } from '../../icons/icons.component'
 import Button from '../../button/button.component'
+import moment from 'moment'
 
 const ProfileAdminView = ({ profile, getAllProfiles}) =>{
 
@@ -25,7 +26,7 @@ const ProfileAdminView = ({ profile, getAllProfiles}) =>{
             <PageTitle backbutton>
                 Profile Page
             </PageTitle>
-            
+
             {profile && <>
                 <div className="grid grid-cols-2 gap-3 auto-rows-max">
                     <div>
@@ -33,7 +34,7 @@ const ProfileAdminView = ({ profile, getAllProfiles}) =>{
                             {profile.user.avatar && <img className="rounded-full profile-photo-admin" src={profile.user.avatar} /> }
                             {profile.user.name && <div className="profile-name flex-1"><span>{profile.user.name}</span></div> }
                             <div className="flex flex-col justify-center">
-                                {/* <Button title="Edit" to={`/profile/edit/${index}`} /> */}
+                                <Button title="Edit" to={`/profile/edit/${profile._id}`} />
                             </div>
                         </div>
 
@@ -41,7 +42,6 @@ const ProfileAdminView = ({ profile, getAllProfiles}) =>{
                             <span className="sub-title"><BookmarkIcon className="icon-left-sm"/> Contact Info</span>
 
                             <div className="flex">
-
                                 <div className="flex-1">
                                     {profile.phone && 
                                     <div className="contact-info-item">
