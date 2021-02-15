@@ -11,7 +11,7 @@ const Student = ({ profile, index}) =>{
 
     return(
         user &&
-        <div className="bg-white rounded-lg shadow flex flex-col overflow-hidden">
+        <div className="bg-white rounded-lg shadow-sm flex flex-col overflow-hidden">
             <div className="student__item--top flex-grow">
                 <Avatar url={user.avatar} color={belt}/>
                 <div className="student__item--details leading-5">
