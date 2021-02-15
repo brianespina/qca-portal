@@ -5,6 +5,7 @@ const INITIAL_STATE = {
     profiles: [],
     repos: [],
     loading: true,
+    view: 'list',
     singleProfileLoading: true,
     error: {}
 }
@@ -54,6 +55,12 @@ function profileReducer(state = INITIAL_STATE, action){
                 profile: payload,
                 loading: false
             }
+
+        case profileActionTypes.UPDATE_PROFILE_VIEW:
+            return{
+                ...state,
+                view: payload
+            } 
 
         default:
             return {

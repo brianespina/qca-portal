@@ -31,3 +31,8 @@ export const selectOneStudent = id => createSelector(
     selectProfileState,
     profile => profile.profiles[id]
 )
+
+export const selectView = createSelector(
+    selectProfileState,
+    profile => profile.view
+)

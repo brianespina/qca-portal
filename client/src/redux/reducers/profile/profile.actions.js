@@ -104,3 +104,10 @@ export const createUpdateProfile = (formData, id) => async dispatch => {
         }
     }
 }
+
+export const updateView = (viewType) => dispatch => {
+    dispatch({
+        type: profileActionTypes.UPDATE_PROFILE_VIEW,
+        payload: viewType
+    })
+}
