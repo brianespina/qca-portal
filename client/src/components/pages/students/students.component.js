@@ -7,6 +7,7 @@ import { selectAllStudents, selectProfileIsLoading } from '../../../redux/reduce
 import Student from '../../student/student.component'
 import PageTitle from '../../page-title/page-title.component'
 import Loader from '../../loader/loader.component'
+import StudentFilters from '../../students-filters/student-filters.component'
 
 
 const Students = ({ getAllProfiles, students, isLoading}) => {
@@ -21,7 +22,9 @@ const Students = ({ getAllProfiles, students, isLoading}) => {
         <MainLayout>
             <PageTitle>
                 Members
+                <StudentFilters />
             </PageTitle>
+            
             <div className="grid-view">
                 {isLoading ? <Loader/> : studentsComponent}
             </div>

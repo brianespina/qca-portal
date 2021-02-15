@@ -658,6 +658,7 @@ button {
 .title-bar {
   border-bottom: solid thin #d0d0d0;
   font-weight: bold;
+  position: relative;
 }
 
 .user-roles-item:nth-child(2n) {
@@ -778,6 +779,31 @@ button {
   .post button {
     padding: 0.3rem 0.4rem;
   }
+}
+
+.view-filter {
+  max-width: 50px;
+  background: #FFF;
+  display: flex;
+  position: absolute;
+  right: 0;
+  width: 100%;
+  top: 0;
+  @apply rounded-lg shadow ;
+}
+
+.view-filter span {
+  flex-basis: 50%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.view-filter span:first-child {
+  border-right: 1px solid #e6e6e6;
+}
+
+.view-filter span.active {
+  background: #f5f5f5;
 }
 
 
