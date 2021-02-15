@@ -789,6 +789,7 @@ button {
   right: 0;
   width: 100%;
   top: 0;
+  overflow: hidden;
   @apply rounded-lg shadow ;
 }
 
