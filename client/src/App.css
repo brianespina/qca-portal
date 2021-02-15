@@ -858,6 +858,23 @@ button {
   border: #da3642;
 }
 
+.sub-title svg {
+  color: #da3642;
+}
+
+.historyRow > div{
+  flex: 1;
+}
+
+.historyRowHeader {
+  font-weight: bold;
+  background: #f7f7f7;
+}
+
+.historyRow:not(.historyRowHeader){
+  border-bottom: solid thin #eee;
+}
+
 
 @keyframes moveToTop{
   0%{

@@ -10,7 +10,7 @@ import PageTitle from '../../page-title/page-title.component'
 import MainLayout from '../../layout/main-layout.component'
 import { BookmarkIcon, InfoIcon, NoteIcon } from '../../icons/icons.component'
 import Button from '../../button/button.component'
-import moment from 'moment'
+import TrainingHistory from '../../training-history/training-history.component'
 
 const ProfileAdminView = ({ profile, getAllProfiles}) =>{
 
@@ -28,7 +28,7 @@ const ProfileAdminView = ({ profile, getAllProfiles}) =>{
             </PageTitle>
 
             {profile && <>
-                <div className="grid grid-cols-2 gap-3 auto-rows-max">
+                <div className="grid md:grid-cols-2 grid-cols-1 gap-3 auto-rows-max">
                     <div>
                         <div className="flex bg-white p-5 rounded-lg shadow overflow-hidden mt-3">
                             {profile.user.avatar && <img className="rounded-full profile-photo-admin" src={profile.user.avatar} /> }
@@ -41,7 +41,7 @@ const ProfileAdminView = ({ profile, getAllProfiles}) =>{
                         <div className="bg-white p-5 rounded-lg shadow overflow-hidden mt-3">
                             <span className="sub-title"><BookmarkIcon className="icon-left-sm"/> Contact Info</span>
 
-                            <div className="flex">
+                            <div className="sm:flex">
                                 <div className="flex-1">
                                     {profile.phone && 
                                     <div className="contact-info-item">
@@ -76,7 +76,7 @@ const ProfileAdminView = ({ profile, getAllProfiles}) =>{
                     </div>
 
                     <div className="flex flex-col">
-                        <div className="bg-white p-5 rounded-lg shadow overflow-hidden mt-3">
+                        <div className="bg-white p-5 rounded-lg shadow overflow-hidden md:mt-3">
                             <span className="sub-title"><InfoIcon className="icon-left-sm"/> Short Bio</span>
                             {profile.bio && <div>{profile.bio}</div> }
                         </div>
@@ -89,6 +89,8 @@ const ProfileAdminView = ({ profile, getAllProfiles}) =>{
                         </div>
                     </div>
                 </div>
+
+                <TrainingHistory className="bg-white p-5 rounded-lg shadow overflow-hidden mt-3 md:mt-8"/>
                 
             </>}
 
