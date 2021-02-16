@@ -56,6 +56,12 @@ const ProfileSchema = new mongoose.Schema({
         type: String
       }
     },
+    transactions: [
+        {
+            type: Object,
+            ref: 'traininghistory'
+        }
+    ],
     date: {
       type: Date,
       default: Date.now

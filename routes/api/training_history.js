@@ -4,6 +4,7 @@ const auth = require('../../middleware/auth')
 const { check, validationResult } = require('express-validator')
 
 const TrainingHistory = require('../../models/TrainingHistory')
+const Profile = require('../../models/Profile')
 
 //@route Post api/traininghistory
 //@desc create or update training history
@@ -25,10 +26,25 @@ router.post('/', [auth, [
     try{
         const newTrainingHistory = new TrainingHistory({
             coach: coach,
-            attendees: attendees
+            attendees: attendees    
         })
 
         const traininghistory = await newTrainingHistory.save()
+
+        attendees.forEach(async attendee => {
+            try {
+                const profile = await Profile.findOne({
+                    user: attendee.user
+                })
+                profile.transactions.unshift(traininghistory._id)
+                await profile.save()
+
+            } catch (err) {
+                console.error(err.message)
+                res.status(500).send('Server Error')
+            }
+        })
+
         res.json(traininghistory)
 
     }catch(err){
@@ -36,6 +52,21 @@ router.post('/', [auth, [
         res.status(500).send('Server Error')
     }
 
+})
+
+//@route    Get api/training
+//@desc     GEt all Training History
+//@access   Public
+router.get('/', async (req, res) => {
+    try {
+        const trainingDays = await TrainingHistory.find()
+        .populate('coach', ['avatar', 'name'])
+        .populate('attendees.user', ['avatar', 'name'])
+        res.json(trainingDays)
+    } catch (err) {
+        console.error(err.message)  
+        res.status(500).send('Server Error')
+    }
 })
 
 
