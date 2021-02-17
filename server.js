@@ -12,6 +12,7 @@ app.use('/api/profile', require('./routes/api/profile'))
 app.use('/api/posts', require('./routes/api/posts'))
 app.use('/api/subscriptions', require('./routes/api/subscriptions'))
 app.use('/api/training', require('./routes/api/training_history'))
+app.use('/api/transactions', require('./routes/api/transactions'))
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, ()=> console.log(`Server Running on port : ${PORT}`))
