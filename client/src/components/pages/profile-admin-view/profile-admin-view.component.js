@@ -90,7 +90,7 @@ const ProfileAdminView = ({ profile, getAllProfiles}) =>{
                     </div>
                 </div>
 
-                <TrainingHistory className="bg-white p-5 rounded-lg shadow overflow-hidden mt-3 md:mt-8"/>
+                <TrainingHistory uid={profile.user._id} className="bg-white p-5 rounded-lg shadow overflow-hidden mt-3 md:mt-8"/>
                 
             </>}
 

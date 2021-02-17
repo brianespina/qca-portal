@@ -875,6 +875,13 @@ button {
   border-bottom: solid thin #eee;
 }
 
+.historypaid span {
+  background: #007BFF;
+  padding: 7px 10px;
+  color: #FFF;
+  border-radius: 13px;
+}
+
 
 @keyframes moveToTop{
   0%{

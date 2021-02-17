@@ -1,9 +1,45 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import moment from 'moment'
+import CurrencyFormat from 'react-currency-format'
 import { HistoryIcon } from '../icons/icons.component'
-import payment from '../../payment'
+import { createStructuredSelector } from 'reselect'
+import { connect } from 'react-redux'
+import { getTransactions } from '../../redux/reducers/transaction/transaction.actions'
+import { selectTransactions } from '../../redux/reducers/transaction/transaction.selectors'
 
-const TrainingHistory = ({ ...otherProps }) => {
-    console.log(Object.keys(payment))
+const TrainingHistory = ({getTransactions, uid, transactions, ...otherProps }) => {
+
+    useEffect(()=>{
+        getTransactions(uid)
+    }, [getTransactions])
+
+    const transactionRows = transactions.map( item =>{ 
+
+        const date = moment().format('MMMM D YYYY')
+        const validity = item.validity === 1 ? `${item.validity} Day` : `${item.validity} Days`
+        const promo = item.promo ? 'True' : 'False'
+
+        return (
+            <div className="historyRow flex p-3">
+                <div className="historydate">
+                    {date}
+                </div>
+                <div className="historyvalid">
+                    {validity}
+                </div>
+                <div className="historypromo">
+                    {promo}
+                </div>
+                <div className="historyprice">
+                    <CurrencyFormat value={item.price} thousandSeparator={true} prefix={'₱'} /> 
+                </div>
+                <div className="historypaid">
+                    <span>{item.status}</span>
+                </div>
+            </div>
+        )
+    })
+
     return(
         <>
             <div { ...otherProps }>
@@ -27,45 +63,20 @@ const TrainingHistory = ({ ...otherProps }) => {
                     </div>
                 </div>
 
-                <div className="historyRow flex p-3">
-                    <div className="historydate">
-                        Feb 15 2021
-                    </div>
-                    <div className="historyvalid">
-                        Valid for 1 day
-                    </div>
-                    <div className="historypromo">
-                        no promo
-                    </div>
-                    <div className="historyprice">
-                        200
-                    </div>
-                    <div className="historypaid">
-                        <span>Paid</span>
-                    </div>
-                </div>
+                {transactionRows}
 
-                <div className="historyRow flex p-3">
-                    <div className="historydate">
-                        Feb 15 2021
-                    </div>
-                    <div className="historyvalid">
-                        Valid for 1 day
-                    </div>
-                    <div className="historypromo">
-                        no promo
-                    </div>
-                    <div className="historyprice">
-                        200
-                    </div>
-                    <div className="historypaid">
-                        <span>Paid</span>
-                    </div>
-                </div>
 
             </div>
         </>
     )
 }
 
-export default TrainingHistory
+const mapDispatchToProps = {
+    getTransactions
+}
+
+const mapStateToProps = createStructuredSelector({
+    transactions: selectTransactions
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(TrainingHistory)

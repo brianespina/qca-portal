@@ -12,7 +12,7 @@ function transactionReducer (state = INITIAL_STATE, action ){
         case transactionTypes.GET_TRANSACTIONS_SUCCESS:
             return{
                 transactionsLoading: false,
-                transactions: payload
+                transactions: payload.transactions
             }
 
         case transactionTypes.GET_TRANSACTIONS_ERROR:
