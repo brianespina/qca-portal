@@ -94,7 +94,8 @@ router.post('/' , [auth, [
 //@access   Public
 router.get('/', async (req, res) => {
     try {
-        const profiles = await Profile.find().populate('user', ['avatar', 'name', 'type'])
+        const profiles = await Profile.find()
+        .populate('user', ['avatar', 'name', 'type'])
         res.json(profiles)
     } catch (err) {
         console.error(err.message)  

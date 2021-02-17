@@ -5,6 +5,7 @@ const { check, validationResult } = require('express-validator')
 
 const TrainingHistory = require('../../models/TrainingHistory')
 const Profile = require('../../models/Profile')
+const Transaction = require('../../models/Transaction')
 
 //@route Post api/traininghistory
 //@desc create or update training history
@@ -31,13 +32,38 @@ router.post('/', [auth, [
 
         const traininghistory = await newTrainingHistory.save()
 
-        attendees.forEach(async attendee => {
+        attendees.forEach(async (attendee, index) => {
             try {
-                const profile = await Profile.findOne({
+                const transaction = await Transaction.findOne({
                     user: attendee.user
                 })
-                profile.transactions.unshift(traininghistory._id)
-                await profile.save()
+
+                if(!transaction){
+                    const newTransaction = new Transaction({
+                        user: attendee.user,
+                        transactions: [
+                            {
+                                tid: traininghistory._id,
+                                validity: attendee.validity,
+                                promo: attendee.promo,
+                                price: attendee.price,
+                                status: attendee.status
+                            }
+                        ]
+                    })
+                    await newTransaction.save()
+                }else{
+                    transaction.transactions.unshift(
+                        {
+                            tid: traininghistory._id,
+                            validity: attendee.validity,
+                            promo: attendee.promo,
+                            price: attendee.price,
+                            status: attendee.status
+                        }
+                    )
+                    await transaction.save()
+                }
 
             } catch (err) {
                 console.error(err.message)
@@ -57,7 +83,7 @@ router.post('/', [auth, [
 //@route    Get api/training
 //@desc     GEt all Training History
 //@access   Public
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
     try {
         const trainingDays = await TrainingHistory.find()
         .populate('coach', ['avatar', 'name'])
