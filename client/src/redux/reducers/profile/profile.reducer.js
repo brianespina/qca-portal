@@ -5,7 +5,7 @@ const INITIAL_STATE = {
     profiles: [],
     repos: [],
     loading: true,
-    view: 'list',
+    view: 'grid',
     singleProfileLoading: true,
     error: {}
 }
