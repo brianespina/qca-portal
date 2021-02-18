@@ -16,3 +16,9 @@ export const getTransactions = (uid) => async dispatch => {
     }
     
 }
+
+export const cleanupTransactions = () => dispatch => {
+    dispatch({
+        type: transactionTypes.CLEANUP_TRANSACTIONS
+    })
+}

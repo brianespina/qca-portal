@@ -18,6 +18,9 @@ function transactionReducer (state = INITIAL_STATE, action ){
         case transactionTypes.GET_TRANSACTIONS_ERROR:
             return INITIAL_STATE
 
+        case transactionTypes.CLEANUP_TRANSACTIONS:
+            return INITIAL_STATE
+
         default:
             return {
                 ...state

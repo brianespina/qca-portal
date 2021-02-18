@@ -4,13 +4,16 @@ import CurrencyFormat from 'react-currency-format'
 import { HistoryIcon } from '../icons/icons.component'
 import { createStructuredSelector } from 'reselect'
 import { connect } from 'react-redux'
-import { getTransactions } from '../../redux/reducers/transaction/transaction.actions'
+import { getTransactions, cleanupTransactions } from '../../redux/reducers/transaction/transaction.actions'
 import { selectTransactions } from '../../redux/reducers/transaction/transaction.selectors'
 
-const TrainingHistory = ({getTransactions, uid, transactions, ...otherProps }) => {
+const TrainingHistory = ({getTransactions, cleanupTransactions, uid, transactions, ...otherProps }) => {
 
     useEffect(()=>{
         getTransactions(uid)
+        return () => {
+            cleanupTransactions()
+        }
     }, [getTransactions])
 
     const transactionRows = transactions.map( item =>{ 
@@ -75,7 +78,8 @@ const TrainingHistory = ({getTransactions, uid, transactions, ...otherProps }) =
 }
 
 const mapDispatchToProps = {
-    getTransactions
+    getTransactions,
+    cleanupTransactions
 }
 
 const mapStateToProps = createStructuredSelector({
