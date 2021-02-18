@@ -11,8 +11,7 @@ export const getTransactions = (uid) => async dispatch => {
         })
     } catch (err) {
         dispatch({
-            type: transactionTypes.GET_TRANSACTIONS_ERROR,
-            payload: { msg: err.response.data.message, status: err.response.status }
+            type: transactionTypes.GET_TRANSACTIONS_ERROR
         })
     }
     

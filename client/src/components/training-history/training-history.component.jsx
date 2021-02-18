@@ -63,8 +63,11 @@ const TrainingHistory = ({getTransactions, uid, transactions, ...otherProps }) =
                     </div>
                 </div>
 
-                {transactionRows}
-
+                {transactions.length ? transactionRows :
+                    <div className="text-lg pt-5 pb-5">
+                        No transaction data found
+                    </div>
+                }
 
             </div>
         </>
