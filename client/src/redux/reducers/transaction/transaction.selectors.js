@@ -6,3 +6,8 @@ export const selectTransactions = createSelector(
     transactionState,
     transaction => transaction.transactions
 )
+
+export const selectTransactionsAreLoading = createSelector(
+    transactionState,
+    transaction => transaction.transactionsLoading
+)

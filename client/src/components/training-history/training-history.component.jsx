@@ -4,10 +4,11 @@ import CurrencyFormat from 'react-currency-format'
 import { HistoryIcon } from '../icons/icons.component'
 import { createStructuredSelector } from 'reselect'
 import { connect } from 'react-redux'
+import LoaderTable from '../loader-table/loader-table.component'
 import { getTransactions, cleanupTransactions } from '../../redux/reducers/transaction/transaction.actions'
-import { selectTransactions } from '../../redux/reducers/transaction/transaction.selectors'
+import { selectTransactions, selectTransactionsAreLoading } from '../../redux/reducers/transaction/transaction.selectors'
 
-const TrainingHistory = ({getTransactions, cleanupTransactions, uid, transactions, ...otherProps }) => {
+const TrainingHistory = ({getTransactions, isLoading, cleanupTransactions, uid, transactions, ...otherProps }) => {
 
     useEffect(()=>{
         getTransactions(uid)
@@ -45,6 +46,7 @@ const TrainingHistory = ({getTransactions, cleanupTransactions, uid, transaction
 
     return(
         <>
+           
             <div { ...otherProps }>
                 <span className="sub-title mb-6"><HistoryIcon className="icon-left-sm"/> Training / Transaction History</span>
 
@@ -65,14 +67,18 @@ const TrainingHistory = ({getTransactions, cleanupTransactions, uid, transaction
                         Status
                     </div>
                 </div>
-
-                {transactions.length ? transactionRows :
-                    <div className="text-lg pt-5 pb-5">
-                        No transaction data found
-                    </div>
+                {isLoading ? <LoaderTable /> : 
+                    <>
+                        {transactions.length ? transactionRows :
+                            <div className="text-lg pt-5 pb-5">
+                                No transaction data found
+                            </div>
+                        }
+                    </>
                 }
 
             </div>
+            
         </>
     )
 }
@@ -83,7 +89,8 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = createStructuredSelector({
-    transactions: selectTransactions
+    transactions: selectTransactions,
+    isLoading: selectTransactionsAreLoading
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrainingHistory)
