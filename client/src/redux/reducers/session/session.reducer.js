@@ -2,7 +2,7 @@ import sessionTypes from './session.types'
 
 const INITIAL_STATE = {
     sessionsLoading: true,
-    sessionsItems: []
+    sessionItems: []
 }
 
 function sessionReducer(state = INITIAL_STATE, action){
@@ -15,7 +15,7 @@ function sessionReducer(state = INITIAL_STATE, action){
             return {
                 ...state,
                 sessionsLoading: false,
-                sessionsItems: payload
+                sessionItems: payload
             }
 
         case sessionTypes.GET_SESSION_ERROR:
