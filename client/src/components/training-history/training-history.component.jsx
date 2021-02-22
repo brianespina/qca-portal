@@ -20,7 +20,7 @@ const TrainingHistory = ({getTransactions, isLoading, cleanupTransactions, uid, 
     const transactionRows = transactions.map( item =>{ 
 
         const date = moment().format('MMMM D YYYY')
-        const validity = item.validity === 1 ? `${item.validity} Day` : `${item.validity} Days`
+        const validity = item.validity === 1 ? `Valid for ${item.validity} day` : `${item.validity} Days`
         const promo = item.promo ? 'True' : 'False'
 
         return (
