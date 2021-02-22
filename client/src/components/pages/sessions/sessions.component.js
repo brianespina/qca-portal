@@ -10,6 +10,7 @@ import TableRow from '../../table/table-row.component'
 import TableContainer from '../../table/table-container.container'
 import MainLayout from '../../layout/main-layout.component'
 import PageTitle from '../../page-title/page-title.component'
+import LoaderTable from '../../loader-table/loader-table.component'
 
 const Sessions = ({ getSessions, sessions, isLoading }) => {
 
@@ -25,11 +26,14 @@ const Sessions = ({ getSessions, sessions, isLoading }) => {
     
     const items = sessions.map( (item) => {
         let attendeeNames = []
-        item.attendees.forEach( (attendee) => attendeeNames.push(attendee.user.name) )
+        item.attendees.forEach( (attendee) => {
+            if(attendee.user.name === item.coach.name) return
+            attendeeNames.push(attendee.user.name)
+        })
         let columns = [
             moment(item.date).format('LL'),
             item.coach.name,
-            attendeeNames.join(',')
+            attendeeNames.join(', ')
         ]
         return columns
     })
@@ -43,7 +47,10 @@ const Sessions = ({ getSessions, sessions, isLoading }) => {
                 <Card>
                     <TableContainer>
                         <TableHeader items={headerItems}></TableHeader>
-                        {sessionRows}
+                        {isLoading ?
+                            <LoaderTable /> : 
+                            sessionRows
+                        }
                     </TableContainer>
                 </Card>
             </MainLayout>
