@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { getSessions } from '../../../redux/reducers/session/session.actions'
+import { createStructuredSelector } from 'reselect'
+import { selectSessionItems } from '../../../redux/reducers/session/session.selectors'
 
 import MainLayout from '../../layout/main-layout.component'
 import PageTitle from '../../page-title/page-title.component'
 
-const Sessions = ({ getSessions }) => {
+const Sessions = ({ getSessions, sessions }) => {
 
     useEffect(()=>{
         getSessions()
@@ -21,4 +23,8 @@ const Sessions = ({ getSessions }) => {
     )
 }
 
-export default connect(null, { getSessions })(Sessions)
+const mapStateToProps = createStructuredSelector({
+    sessions: selectSessionItems
+})
+
+export default connect(mapStateToProps, { getSessions })(Sessions)
