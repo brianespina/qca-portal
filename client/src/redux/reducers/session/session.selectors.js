@@ -6,3 +6,8 @@ export const selectSessionItems = createSelector(
     selectSessionState,
     session => session.sessionItems
 )
+
+export const selectSessionIsLoading = createSelector(
+    selectSessionState,
+    session => session.sessionsLoading
+)
