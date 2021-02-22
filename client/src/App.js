@@ -15,6 +15,7 @@ import ProfileEdit from './components/pages/profile-edit/prodile-edit.component'
 import ProfileAdminView from './components/pages/profile-admin-view/profile-admin-view.component'
 import Subscriptions from './components/pages/subscriptions/subscriptions.component'
 import Users from './components/pages/users/users.component'
+import Sessions from './components/pages/sessions/sessions.component'
 
 import './App.css';
 
@@ -38,6 +39,7 @@ const App = () =>{
             <PrivateRoute admin={true} exact path="/profile/:id" component={ProfileAdminView} />
             <PrivateRoute admin={true} exact path="/profile/edit/:id" component={ProfileEdit} />
             <PrivateRoute admin={true} exact path="/subscriptions" component={Subscriptions} />
+            <PrivateRoute admin={true} exact path="/sessions" component={Sessions} />
             <PrivateRoute admin={true} exact path="/users" component={Users} />
             <PrivateRoute exact path="/profile" component={ProfilePage} />
             <PrivateRoute admin={true} exact path="/students" component={Students} />

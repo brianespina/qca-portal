@@ -5,6 +5,7 @@ import profileReducer from './profile/profile.reducer'
 import subscriptionReducer from './subscription/subscription.reducer'
 import usersReducer from './users/users.reducer'
 import transactionReducer from './transaction/transaction.reducer'
+import sessionReducer from './session/session.reducer'
 
 export default combineReducers({
     alert: alertReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
     profile: profileReducer,
     subscription: subscriptionReducer,
     users: usersReducer,
-    transaction: transactionReducer
+    transaction: transactionReducer,
+    session: sessionReducer
 })
