@@ -111,3 +111,9 @@ export const updateView = (viewType) => dispatch => {
         payload: viewType
     })
 }
+
+export const cleanupProfiles = () => dispatch => {
+    dispatch({
+        type: profileActionTypes.CLEANUP_PROFILES
+    })
+}

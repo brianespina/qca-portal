@@ -62,6 +62,11 @@ function profileReducer(state = INITIAL_STATE, action){
                 view: payload
             } 
 
+        case profileActionTypes.CLEANUP_PROFILES:
+            return{
+                ...INITIAL_STATE
+            }
+
         default:
             return {
                 ...state

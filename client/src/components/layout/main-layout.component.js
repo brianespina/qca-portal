@@ -2,9 +2,8 @@ import React from 'react'
 import MainNavigation from '../main-navigation/main-navigation.component'
 import Alert from '../layout/alert.component'
 
+const MainLayout = ({ cleanupProfiles, children,  }) => {
 
-
-const MainLayout = ({ children }) => {
     return(
         <section className="dash-page-container">
             <MainNavigation />

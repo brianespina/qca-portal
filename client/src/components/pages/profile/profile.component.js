@@ -24,7 +24,7 @@ const ProfilePage = ({ profile , getCurrentUsersProfile, match, singleProfileIsL
     return(
         <MainLayout>
 
-{profile && <>
+        {profile ? <>
                 <div className="grid md:grid-cols-2 grid-cols-1 gap-3 auto-rows-max">
                     <div>
                         <div className="flex bg-white p-5 rounded-lg shadow overflow-hidden mt-3">
@@ -87,7 +87,11 @@ const ProfilePage = ({ profile , getCurrentUsersProfile, match, singleProfileIsL
                     </div>
                 </div>
                 
-            </>}
+            </>:
+                <>
+                no profile
+                </>
+            }
 
         </MainLayout>
     )
@@ -98,4 +102,8 @@ const mapStateToProps = createStructuredSelector({
     singleProfileIsLoading: selectSingleProfileIsLoading
 })
 
-export default connect(mapStateToProps, { getCurrentUsersProfile })(ProfilePage)
+const mapDispatchToProps = {
+    getCurrentUsersProfile
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage)
