@@ -513,7 +513,9 @@ button {
 
 .card--floating{
   margin: auto !important;
+  display: block !important;
 }
+
 
 /* Modal */
 

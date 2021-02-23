@@ -117,3 +117,7 @@ export const cleanupProfiles = () => dispatch => {
         type: profileActionTypes.CLEANUP_PROFILES
     })
 }
+
+export const getProfileIdByUserID = (uid, state) => {
+    console.log( state.find( item => uid.toString() === item.user._id.toString() ))
+}
