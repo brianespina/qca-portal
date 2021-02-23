@@ -7,7 +7,7 @@ const TrainingHistory = require('../../models/TrainingHistory')
 const Profile = require('../../models/Profile')
 const Transaction = require('../../models/Transaction')
 
-//@route Post api/traininghistory
+//@route Post api/sessions
 //@desc create or update training history
 //@access Private
 router.post('/', [auth, [
@@ -80,7 +80,7 @@ router.post('/', [auth, [
 
 })
 
-//@route    Get api/training
+//@route    Get api/sessions
 //@desc     GEt all Training History
 //@access   Public
 router.get('/', auth, async (req, res) => {
@@ -89,6 +89,25 @@ router.get('/', auth, async (req, res) => {
         .populate('coach', ['avatar', 'name'])
         .populate('attendees.user', ['avatar', 'name'])
         res.json(trainingDays)
+    } catch (err) {
+        console.error(err.message)  
+        res.status(500).send('Server Error')
+    }
+})
+
+//@route    Get api/sessions/:sid/:uid
+//@desc     GEt User transaction on a session
+//@access   Public
+router.get('/:sid/:uid', auth, async (req, res) => {
+    try {
+        const transactionDays = await Transaction.findOne({
+            user: req.params.uid
+        })
+
+        const sessionDay = transactionDays.transactions.filter( day => day.tid.toString() === req.params.sid)
+
+        res.json(sessionDay)
+        
     } catch (err) {
         console.error(err.message)  
         res.status(500).send('Server Error')

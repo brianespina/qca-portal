@@ -10,13 +10,6 @@ router.get('/:userId', auth, async (req, res) => {
         const transaction = await Transaction.findOne({
             user: req.params.userId
         })
-        .populate({
-            path: 'transactions',
-            populate: {
-                path: 'tid'
-            }
-        })
-
         res.json(transaction)
     } catch (err) {
         console.error(err.message)
