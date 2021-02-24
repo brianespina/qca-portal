@@ -23,6 +23,7 @@ const Sessions = ({ getSessions, sessions, isLoading, profiles, getAllProfiles }
         if(!profiles.length){
             getAllProfiles()
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const setSessionRows = (loadState) => {
@@ -33,7 +34,7 @@ const Sessions = ({ getSessions, sessions, isLoading, profiles, getAllProfiles }
                 item.attendees.forEach( (attendee) => {
                     if(attendee.user.name === item.coach.name) return
                     let profile = profiles.find( prof => prof.user._id ===  attendee.user._id)
-                    attendeeNames.push(<Link className="attendees-list" to={`/profile/${profile._id}`}>{ attendee.user.name }</Link>)
+                    attendeeNames.push(<Link className="attendees-list" to={`/profile/${profile._id}`} key={profile._id}>{ attendee.user.name }</Link>)
                 })
         
                 let columns = [
