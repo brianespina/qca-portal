@@ -14,6 +14,7 @@ import TableContainer from '../../table/table-container.container'
 import MainLayout from '../../layout/main-layout.component'
 import PageTitle from '../../page-title/page-title.component'
 import LoaderTable from '../../loader-table/loader-table.component'
+import SessionForm from '../../session-form/session-form.component'
 
 
 const Sessions = ({ getSessions, sessions, isLoading, profiles, getAllProfiles }) => {
@@ -62,6 +63,7 @@ const Sessions = ({ getSessions, sessions, isLoading, profiles, getAllProfiles }
         <>
             <MainLayout>
                 <PageTitle>Training Sessions</PageTitle>
+                <SessionForm />
                 <Card>
                     <TableContainer>
                         <TableHeader items={headerItems}></TableHeader>

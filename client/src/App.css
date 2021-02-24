@@ -854,6 +854,16 @@ button {
   @apply rounded-full;
 }
 
+.button[type="success"] {
+  background: #28A745;
+  color: #FFF;
+  border: none;
+}
+
+.button[size="lg"]{
+  padding: 10px;
+}
+
 .button:hover {
   background: #da3642;
   color: #FFF;
