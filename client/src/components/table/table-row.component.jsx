@@ -8,7 +8,7 @@ const TableRow = ({ items }) => {
 
     return(
         <>
-            <div class="historyRow flex p-3">
+            <div className="historyRow flex p-3">
                 { rowItems }
             </div>
         </>

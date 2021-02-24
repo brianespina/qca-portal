@@ -32,8 +32,8 @@ const Sessions = ({ getSessions, sessions, isLoading, profiles, getAllProfiles }
                 let attendeeNames = []
                 item.attendees.forEach( (attendee) => {
                     if(attendee.user.name === item.coach.name) return
-                    let profile = profiles.find( prof => prof.user._id ==  attendee.user._id)
-                    attendeeNames.push(<Link class="attendees-list" to={`/profile/${profile._id}`}>{ attendee.user.name }</Link>)
+                    let profile = profiles.find( prof => prof.user._id ===  attendee.user._id)
+                    attendeeNames.push(<Link className="attendees-list" to={`/profile/${profile._id}`}>{ attendee.user.name }</Link>)
                 })
         
                 let columns = [

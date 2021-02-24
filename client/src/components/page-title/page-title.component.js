@@ -4,7 +4,7 @@ import BackButton from '../back-button/back-button.component'
 const PageTitle = ({children, backbutton}) => {
 
     return(
-        <div class="title-bar">
+        <div className="title-bar">
             {backbutton && <BackButton/>}
             <h2 className="page-title">
                 { children }

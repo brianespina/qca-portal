@@ -6,7 +6,7 @@ const TableHeader = ({ items }) => {
     
     return(
         <>
-            <div class="historyRow flex historyRowHeader p-3 w-full">
+            <div className="historyRow flex historyRowHeader p-3 w-full">
                 { headerItems }
             </div>
         </>
