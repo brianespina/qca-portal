@@ -516,6 +516,10 @@ button {
   display: block !important;
 }
 
+.attendees-list {
+  display: block;
+}
+
 
 /* Modal */
 
