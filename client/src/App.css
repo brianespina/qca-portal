@@ -492,7 +492,7 @@ button {
 }
 
 .card{
-  @apply flex bg-white p-5 rounded-md shadow overflow-hidden mt-3;
+  @apply bg-white p-5 rounded-md shadow overflow-hidden mt-3;
 }
 
 .animate-to-top{
@@ -887,6 +887,10 @@ button {
   border-bottom: solid thin #eee;
 }
 
+.form-attendees-box.addSessionForm-boxes {
+  padding: 0 20px;
+}
+
 .historypaid span {
   background: #007BFF;
   padding: 7px 10px;
@@ -894,6 +898,34 @@ button {
   border-radius: 13px;
 }
 
+.form-attendees-box--item {
+  background: #f7f7f7;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.addSessionForm{
+  display: flex;
+  width: 100%;
+  padding-top: 20px;
+}
+
+.addSessionForm-boxes{
+  flex: 1;
+}
+
+.form-attendees-box--item-row span {
+  font-weight: bold;
+}
+
+.form-attendees-box--item-form input {
+  border: solid thin #b5b5b5;
+  padding: 8px;
+  margin: 5px 0;
+  width: 100%;
+  border-radius: 5px;
+}
 
 @keyframes moveToTop{
   0%{

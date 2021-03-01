@@ -24,6 +24,8 @@ router.post('/', [auth, [
         attendees
     } = req.body
 
+    console.log(attendees)
+
     try{
         const newTrainingHistory = new TrainingHistory({
             coach: coach,

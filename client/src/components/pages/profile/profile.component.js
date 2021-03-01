@@ -3,12 +3,7 @@ import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import { getCurrentUsersProfile } from '../../../redux/reducers/profile/profile.actions'
 import { selectProfile, selectSingleProfileIsLoading } from '../../../redux/reducers/profile/profile.selectors'
-
-import Modal from '../../modal/modal.component'
-import ProfileForm from '../../profile-form/profile-form.component'
 import MainLayout from '../../layout/main-layout.component'
-import Loader from '../../loader/loader.component'
-import Profile from '../../profile/profile.component'
 import Button from '../../button/button.component'
 import { BookmarkIcon, InfoIcon, NoteIcon } from '../../icons/icons.component'
 
