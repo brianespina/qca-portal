@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import Card from '../card/card.component'
@@ -22,10 +22,6 @@ const SessionForm = ({ profiles, profilesAreLoading }) => {
         price: '',
         status: ''
     })
-
-    useEffect(() => {
-        console.log(attendeeObj)
-    }, [formData])
 
     const addAttendee = async (attendee) => {
         setFormData({
