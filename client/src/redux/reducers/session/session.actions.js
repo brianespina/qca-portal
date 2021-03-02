@@ -59,3 +59,27 @@ export const addSession = formData => async dispatch => {
         console.error(err)
     }
 }
+
+export const deleteSession = sessionData => async dispatch => {
+
+    const config = {
+        data: sessionData,
+        header: {
+            'Content type': 'application/json'
+        }
+        
+    }
+
+    try{
+        await axios.delete('/api/sessions', config)
+
+        dispatch({
+            type: sessionTypes.DELETE_SESSION_SUCCESS
+        })
+
+        dispatch(getSessions())
+
+    }catch(err){
+        console.error(err)
+    }
+}

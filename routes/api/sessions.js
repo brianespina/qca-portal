@@ -132,7 +132,6 @@ router.delete('/', auth, async (req, res) => {
 
         await TrainingHistory.findOneAndDelete({ _id: req.body.id })
         
-
         res.json({ message: 'Session deleted' })
 
     }catch(err){

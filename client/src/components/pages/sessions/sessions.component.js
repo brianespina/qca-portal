@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
-import { getSessions } from '../../../redux/reducers/session/session.actions'
+import { getSessions, deleteSession } from '../../../redux/reducers/session/session.actions'
 import { getAllProfiles } from '../../../redux/reducers/profile/profile.actions'
 import { createStructuredSelector } from 'reselect'
 import { selectSessionItems, selectSessionIsLoading } from '../../../redux/reducers/session/session.selectors'
@@ -15,9 +15,11 @@ import MainLayout from '../../layout/main-layout.component'
 import PageTitle from '../../page-title/page-title.component'
 import LoaderTable from '../../loader-table/loader-table.component'
 import SessionForm from '../../session-form/session-form.component'
+import Button from '../../button/button.component'
+import { TrashIcon } from '../../icons/icons.component'
 
 
-const Sessions = ({ getSessions, sessions, isLoading, profiles, getAllProfiles }) => {
+const Sessions = ({ getSessions, sessions, isLoading, profiles, getAllProfiles, deleteSession }) => {
 
     useEffect(()=>{
         getSessions()  
@@ -32,6 +34,7 @@ const Sessions = ({ getSessions, sessions, isLoading, profiles, getAllProfiles }
         if(loadState){
             const items = sessions.map( (item) => {
                 let attendeeNames = []
+                let attendeeIds = item.attendees.map( item => item.user._id)
                 item.attendees.forEach( (attendee) => {
                     if(attendee.user.name === item.coach.name) return
                     let profile = profiles.find( prof => prof.user._id ===  attendee.user._id)
@@ -41,7 +44,8 @@ const Sessions = ({ getSessions, sessions, isLoading, profiles, getAllProfiles }
                 let columns = [
                     moment(item.date).format('LL'),
                     item.coach.name,
-                    attendeeNames
+                    attendeeNames,
+                    <Button onClick={()=>{ deleteSession({id: item._id, users: attendeeIds}) }}><TrashIcon className="icon-left-sm"/></Button>
                 ]
                 return columns
             })
@@ -54,7 +58,8 @@ const Sessions = ({ getSessions, sessions, isLoading, profiles, getAllProfiles }
     const headerItems = [
         'Date',
         'Coach',
-        'Attendees'
+        'Attendees',
+        ''
     ]
 
     let sessionRows = setSessionRows(profiles.length)
@@ -86,7 +91,8 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = {
     getSessions,
-    getAllProfiles
+    getAllProfiles,
+    deleteSession
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sessions)
