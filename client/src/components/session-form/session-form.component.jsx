@@ -6,8 +6,9 @@ import Button from '../button/button.component'
 import { PlusIcon } from '../icons/icons.component'
 import TableHeader from '../table/table-header.component'
 import { selectAllStudents, selectProfileIsLoading } from '../../redux/reducers/profile/profile.selectors'
+import { addSession } from '../../redux/reducers/session/session.actions'
 
-const SessionForm = ({ profiles, profilesAreLoading }) => {
+const SessionForm = ({ profiles, profilesAreLoading, addSession }) => {
 
     const[formData, setFormData] = useState({
         coach: '5f153cbcca81990574fff83c',
@@ -15,13 +16,17 @@ const SessionForm = ({ profiles, profilesAreLoading }) => {
     })
 
     const [attendeeObj , setattendeeObj] = useState({
-        id: '',
+        user: '',
         name: '',
-        validity: '',
-        promo: '',
-        price: '',
-        status: ''
+        validity: 1,
+        promo: false,
+        price: 200,
+        status: 'paid'
     })
+
+    // const addSession = (a) => {
+    //     console.log(a)
+    // }
 
     const addAttendee = async (attendee) => {
         setFormData({
@@ -31,10 +36,6 @@ const SessionForm = ({ profiles, profilesAreLoading }) => {
                 attendee
             ]
         })
-    }
-
-    const addSession = formData => {
-        console.log(formData)
     }
 
     const attendees = formData.attendees.map( (attendee, i) => {
@@ -51,11 +52,18 @@ const SessionForm = ({ profiles, profilesAreLoading }) => {
 
     const handleChange = (e) => {
 
-        if(e.target.name === 'id'){
+        if(e.target.name === 'user'){
             setattendeeObj({
                 ...attendeeObj, 
                 [e.target.name]: e.target.value,
                 name: e.target.selectedOptions[0].dataset.name
+            })
+        }else if(e.target.name === 'validity'){
+            let price = e.target.value === 1 ? 200 : 2000
+            setattendeeObj({
+                ...attendeeObj, 
+                [e.target.name]: e.target.value,
+                price: price
             })
         }else{
             setattendeeObj({
@@ -65,6 +73,8 @@ const SessionForm = ({ profiles, profilesAreLoading }) => {
         }
         
     }
+
+
 
     const studentList = profiles.map( (item, i) => <option value={item.user._id} key={i} data-name={item.user.name}>{item.user.name}</option>) 
 
@@ -85,7 +95,8 @@ const SessionForm = ({ profiles, profilesAreLoading }) => {
 
                     <div className="form-attendees-box addSessionForm-boxes">
                         <div className="form-attendees-box--item-form">
-                            <select name="id" id="id" value={attendeeObj.id} onChange={e => handleChange(e)}>
+                            <select name="user" id="user" value={attendeeObj.user} onChange={e => handleChange(e)}>
+                                <option disabled hidden value=''>Select Student</option>
                                 {studentList}
                             </select>
                             <select name="validity" id="validity" value={attendeeObj.validity} onChange={e => handleChange(e)}>
@@ -131,4 +142,8 @@ const mapStateToProps = createStructuredSelector({
     profilesAreLoading: selectProfileIsLoading
 })
 
-export default connect(mapStateToProps)(SessionForm)
+const mapDispatchToProps = {
+    addSession
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SessionForm)

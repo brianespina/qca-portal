@@ -24,6 +24,15 @@ function sessionReducer(state = INITIAL_STATE, action){
                 sessionsLoading: false
             }
 
+        case sessionTypes.ADD_SESSION_SUCCESS:
+            return{
+                sessionsLoading: false,
+                sessionItems:[
+                    ...state.sessionItems,
+                    payload
+                ]
+            }
+
         default: 
             return state
     }
