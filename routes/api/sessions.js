@@ -116,5 +116,29 @@ router.get('/:sid/:uid', auth, async (req, res) => {
     }
 })
 
+//@route    Delete api/sessions
+//@desc     Delete session and transactions
+//@access   Private
+router.delete('/', auth, async (req, res) => {
+    try{
+
+        req.body.users.forEach( async user => {
+            const userTrans = await Transaction.findOne({ user: user })
+            const removeIndex = userTrans.transactions.map( item => item.tid )
+                    .indexOf(req.body.id)
+            userTrans.transactions.splice(removeIndex, 1)
+            await userTrans.save()
+        })
+
+        await TrainingHistory.findOneAndDelete({ _id: req.body.id })
+        
+
+        res.json({ message: 'Session deleted' })
+
+    }catch(err){
+        console.error(err.message)
+        res.status(500).send('Server Error')
+    }
+})
 
 module.exports = router
