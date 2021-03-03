@@ -63,11 +63,11 @@ const ProfileAdminView = ({ profile, getAllProfiles}) =>{
                                         {profile.address}
                                     </div>}
 
-                                    {/* {profile.belt && 
+                                    {profile.belt && 
                                     <div className="contact-info-item">
                                         <span>Belt</span>
                                         {profile.belt}
-                                    </div>} */}
+                                    </div>}
                                 </div>
                             </div>
                             
