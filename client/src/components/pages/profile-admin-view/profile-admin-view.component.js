@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
 // Redux
@@ -11,14 +11,57 @@ import MainLayout from '../../layout/main-layout.component'
 import { BookmarkIcon, InfoIcon, NoteIcon } from '../../icons/icons.component'
 import Button from '../../button/button.component'
 import TrainingHistory from '../../training-history/training-history.component'
+import ProfileEditInput from '../../profile-edit-input/profile-edit-input.component'
 
 const ProfileAdminView = ({ profile, getAllProfiles}) =>{
+
+    const [editMode, setEditMode] = useState(false)
+
+    const [ formData, setFormData ] = useState({
+        phone: '',
+        emergency: '',
+        address: '',
+        belt: '',
+        bio: ''
+    })
 
     useEffect(()=>{
         if(!profile){
             getAllProfiles()
         }
     }, [])
+    
+    useEffect(()=>{
+        if(profile){
+            setFormData({
+                phone: profile.phone || '',
+                emergency: profile.emergency || '',
+                address: profile.address || '',
+                belt: profile.belt || '',
+                bio: profile.bio || ''
+            })
+        }
+    }, [profile])
+
+    const {
+        phone,
+        emergency,
+        address,
+        belt,
+        bio
+    } = formData
+
+    const handleChange = event =>{
+        const { name, value } = event.target
+        setFormData({
+            ...formData,
+            [name]: value
+        })
+    }
+
+    const toggleEdit = () => {
+        setEditMode(!editMode)
+    }
 
     return(
         <MainLayout>
@@ -34,7 +77,7 @@ const ProfileAdminView = ({ profile, getAllProfiles}) =>{
                             {profile.user.avatar && <img className="rounded-full profile-photo-admin" src={profile.user.avatar} /> }
                             {profile.user.name && <div className="profile-name flex-1"><span>{profile.user.name}</span></div> }
                             <div className="flex flex-col justify-center">
-                                <Button title="Edit" to={`/profile/edit/${profile._id}`} />
+                                <Button title="Edit" onClick={toggleEdit} />
                             </div>
                         </div>
 
@@ -46,13 +89,13 @@ const ProfileAdminView = ({ profile, getAllProfiles}) =>{
                                     {profile.phone && 
                                     <div className="contact-info-item">
                                         <span>Phone Number</span>
-                                        {profile.phone}
+                                        <ProfileEditInput type="text" value={phone} name="phone" onChange={handleChange} active={editMode}/>
                                     </div>}
                                 
                                     {profile.emergency && 
                                     <div className="contact-info-item">
                                         <span>Emergency Number</span>
-                                        {profile.emergency}
+                                        <ProfileEditInput type="text" value={emergency} name="emergency" onChange={handleChange} active={editMode}/>
                                     </div>}
                                 </div>
 

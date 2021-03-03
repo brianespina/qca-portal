@@ -927,6 +927,20 @@ button {
   border-radius: 5px;
 }
 
+.hidden-input-wrapper input:active,
+.hidden-input-wrapper input:focus,
+.hidden-input-wrapper input,
+.hidden-input-wrapper input:-moz-focusring {
+  outline: none;
+  border: none;
+  border-bottom: solid thin #000;
+}
+
+.hidden-input-wrapper svg {
+  transform: translateX(-100%);
+  stroke: #acacac;
+}
+
 @keyframes moveToTop{
   0%{
     opacity: 0;
