@@ -146,7 +146,7 @@ const ProfileAdminView = ({ profile, getAllProfiles, createUpdateProfile}) =>{
                 
                 {editMode && 
                 <div className="profile-update-buttons">
-                    <FloatingButton>Cancel</FloatingButton>
+                    <FloatingButton onClick={()=> setEditMode(false)}>Cancel</FloatingButton>
                     <FloatingButton type="success" onClick={handleSubmit}>Save Changes</FloatingButton>
                 </div>}
                 
