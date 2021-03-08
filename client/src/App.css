@@ -937,7 +937,6 @@ button {
 }
 
 .hidden-input-wrapper svg {
-  transform: translateX(-100%);
   stroke: #acacac;
 }
 
