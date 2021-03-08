@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 // Redux
 import { selectOneStudent } from '../../../redux/reducers/profile/profile.selectors'
-import { getAllProfiles } from '../../../redux/reducers/profile/profile.actions'
+import { getAllProfiles, createUpdateProfile } from '../../../redux/reducers/profile/profile.actions'
 
 // Components
 import PageTitle from '../../page-title/page-title.component'
@@ -12,8 +12,9 @@ import { BookmarkIcon, InfoIcon, NoteIcon } from '../../icons/icons.component'
 import Button from '../../button/button.component'
 import TrainingHistory from '../../training-history/training-history.component'
 import ProfileEditInput from '../../profile-edit-input/profile-edit-input.component'
+import FloatingButton from '../../floating-button/floating-button.component'
 
-const ProfileAdminView = ({ profile, getAllProfiles}) =>{
+const ProfileAdminView = ({ profile, getAllProfiles, createUpdateProfile}) =>{
 
     const [editMode, setEditMode] = useState(false)
 
@@ -43,6 +44,8 @@ const ProfileAdminView = ({ profile, getAllProfiles}) =>{
         }
     }, [profile])
 
+    let profileId = profile && profile.user._id || false
+
     const {
         phone,
         emergency,
@@ -63,6 +66,11 @@ const ProfileAdminView = ({ profile, getAllProfiles}) =>{
         setEditMode(!editMode)
     }
 
+    const handleSubmit = () => {
+        createUpdateProfile(formData, profile.user._id)
+        setEditMode(false)
+    }
+
     return(
         <MainLayout>
             
@@ -77,7 +85,8 @@ const ProfileAdminView = ({ profile, getAllProfiles}) =>{
                             {profile.user.avatar && <img className="rounded-full profile-photo-admin" src={profile.user.avatar} /> }
                             {profile.user.name && <div className="profile-name flex-1"><span>{profile.user.name}</span></div> }
                             <div className="flex flex-col justify-center">
-                                <Button title="Edit" onClick={toggleEdit} />
+                                {!editMode && <Button title="Edit" onClick={toggleEdit} />}
+                                
                             </div>
                         </div>
 
@@ -103,13 +112,13 @@ const ProfileAdminView = ({ profile, getAllProfiles}) =>{
                                     {profile.address && 
                                     <div className="contact-info-item">
                                         <span>Address</span>
-                                        {profile.address}
+                                        <ProfileEditInput type="text" value={address} name="address" onChange={handleChange} active={editMode}/>
                                     </div>}
 
                                     {profile.belt && 
                                     <div className="contact-info-item">
                                         <span>Belt</span>
-                                        {profile.belt}
+                                        <ProfileEditInput type="text" value={belt} name="belt" onChange={handleChange} active={editMode}/>
                                     </div>}
                                 </div>
                             </div>
@@ -121,7 +130,7 @@ const ProfileAdminView = ({ profile, getAllProfiles}) =>{
                     <div className="flex flex-col">
                         <div className="bg-white p-5 rounded-lg shadow overflow-hidden md:mt-3">
                             <span className="sub-title"><InfoIcon className="icon-left-sm"/> Short Bio</span>
-                            {profile.bio && <div>{profile.bio}</div> }
+                            <ProfileEditInput type="text" value={bio} name="bio" onChange={handleChange} active={editMode}/>
                         </div>
 
                         <div className="bg-white p-5 rounded-lg shadow overflow-hidden mt-3 flex-1">
@@ -134,6 +143,12 @@ const ProfileAdminView = ({ profile, getAllProfiles}) =>{
                 </div>
 
                 <TrainingHistory uid={profile.user._id} className="bg-white p-5 rounded-lg shadow overflow-hidden mt-3 md:mt-8"/>
+                
+                {editMode && 
+                <div className="profile-update-buttons">
+                    <FloatingButton>Cancel</FloatingButton>
+                    <FloatingButton type="success" onClick={handleSubmit}>Save Changes</FloatingButton>
+                </div>}
                 
             </>}
 
@@ -148,5 +163,10 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
+const mapDispatchToProps = {
+    createUpdateProfile,
+    getAllProfiles
+}
 
-export default connect(mapStateToProps, {getAllProfiles})(ProfileAdminView)
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileAdminView)
