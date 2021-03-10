@@ -1,15 +1,21 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
-
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import { selectAuthState, selectIsAdmin } from '../../redux/reducers/auth/auth.selector'
 import { logout } from '../../redux/reducers/auth/auth.actions'
+import { getCurrentUsersProfile } from '../../redux/reducers/profile/profile.actions'
+import { selectUserId } from '../../redux/reducers/auth/auth.selector'
+import { selectProfile } from '../../redux/reducers/profile/profile.selectors'
 
 // Icons
 import {UserIcon, LogoutIcon} from '../icons/icons.component'
 
-const UserLinks = ({ auth, isAdmin, logout }) => {
+const UserLinks = ({ auth, isAdmin, userId, logout, getCurrentUsersProfile, profile }) => {
+
+    useEffect(() => {
+        getCurrentUsersProfile(userId)
+    }, [userId])
 
     const { isAuthenticated, loading} = auth
 
@@ -23,9 +29,12 @@ const UserLinks = ({ auth, isAdmin, logout }) => {
                     </NavLink>
                 </li>
             } */}
-            <NavLink exact to="/profile" className="main-nav-button">
-                <UserIcon className="icon-left-sm"/>{' '}  Profile
-            </NavLink>
+            {profile && 
+                <NavLink exact to={`/profile/${profile._id}`} className="main-nav-button">
+                    <UserIcon className="icon-left-sm"/>{' '}  Profile
+                </NavLink>
+            }
+
             <a onClick={logout} href="#!" className="main-nav-button">
                 <LogoutIcon className="icon-left-sm"/>{' '}
                 <span className="hide-sm">Log Out</span></a>
@@ -58,7 +67,14 @@ const UserLinks = ({ auth, isAdmin, logout }) => {
 
 const mapStateToProps = createStructuredSelector({
     auth: selectAuthState, 
-    isAdmin: selectIsAdmin
+    isAdmin: selectIsAdmin,
+    userId: selectUserId,
+    profile: selectProfile
 })
 
-export default connect(mapStateToProps, { logout })(UserLinks)
+const mapDispatchToProps = {
+    getCurrentUsersProfile,
+    logout
+}
+
+export default connect(mapStateToProps, mapDispatchToProps )(UserLinks)

@@ -27,3 +27,7 @@ export const selectIsLoading = createSelector(
     auth => auth.loading
 )
 
+export const selectUserId = createSelector(
+    [selectAuth],
+    auth => auth.user._id
+)

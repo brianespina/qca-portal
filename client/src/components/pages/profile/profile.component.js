@@ -11,13 +11,15 @@ import LoaderTable from '../../loader-table/loader-table.component'
 const ProfilePage = ({ profile , getCurrentUsersProfile, match, singleProfileIsLoading}) =>{
 
     useEffect(()=>{
-        getCurrentUsersProfile(match.params.id)
+        if(!profile){
+            getCurrentUsersProfile(match.params.id)
+        }
     }, [match.params.id])
     
 
     return(
         <MainLayout>
-        {singleProfileIsLoading ? <LoaderTable /> :
+        {singleProfileIsLoading ? <LoaderTable/> :
             <>
             {profile ? <>
                 <div className="grid md:grid-cols-2 grid-cols-1 gap-3 auto-rows-max">

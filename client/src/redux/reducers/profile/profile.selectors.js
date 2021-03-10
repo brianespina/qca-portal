@@ -7,6 +7,11 @@ export const selectProfile = createSelector(
     profile => profile.profile
 )
 
+export const selectProfileId = createSelector(
+    selectProfileState,
+    profile => profile.profile._id
+)
+
 export const selectProfileIsLoading = createSelector(
     selectProfileState,
     profile => profile.loading
