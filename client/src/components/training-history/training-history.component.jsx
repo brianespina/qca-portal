@@ -15,7 +15,7 @@ const TrainingHistory = ({getTransactions, isLoading, cleanupTransactions, uid, 
         return () => {
             cleanupTransactions()
         }
-    }, [getTransactions])
+    }, [uid])
 
     const transactionRows = transactions.map( item =>{ 
 

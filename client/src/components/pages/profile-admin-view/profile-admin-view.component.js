@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 // Redux
 import { selectOneStudent } from '../../../redux/reducers/profile/profile.selectors'
-import { getAllProfiles, createUpdateProfile } from '../../../redux/reducers/profile/profile.actions'
+import { getAllProfiles, createUpdateProfile, cleanupProfiles } from '../../../redux/reducers/profile/profile.actions'
 
 // Components
 import PageTitle from '../../page-title/page-title.component'
@@ -14,7 +14,7 @@ import TrainingHistory from '../../training-history/training-history.component'
 import ProfileEditInput from '../../profile-edit-input/profile-edit-input.component'
 import FloatingButton from '../../floating-button/floating-button.component'
 
-const ProfileAdminView = ({ profile, getAllProfiles, createUpdateProfile}) =>{
+const ProfileAdminView = ({ profile, getAllProfiles, createUpdateProfile, cleanupProfiles}) =>{
 
     const [editMode, setEditMode] = useState(false)
 
@@ -30,6 +30,10 @@ const ProfileAdminView = ({ profile, getAllProfiles, createUpdateProfile}) =>{
     useEffect(()=>{
         if(!profile){
             getAllProfiles()
+        }
+
+        return () => {
+            cleanupProfiles()
         }
     }, [])
     
@@ -144,7 +148,7 @@ const ProfileAdminView = ({ profile, getAllProfiles, createUpdateProfile}) =>{
                         </div>
                     </div>
                 </div>
-
+                       
                 <TrainingHistory uid={profile.user._id} className="bg-white p-5 rounded-lg shadow overflow-hidden mt-3 md:mt-8"/>
                 
                 {editMode && 
@@ -168,7 +172,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = {
     createUpdateProfile,
-    getAllProfiles
+    getAllProfiles,
+    cleanupProfiles
 }
 
 
