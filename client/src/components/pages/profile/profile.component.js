@@ -6,6 +6,7 @@ import { selectProfile, selectSingleProfileIsLoading } from '../../../redux/redu
 import MainLayout from '../../layout/main-layout.component'
 import Button from '../../button/button.component'
 import { BookmarkIcon, InfoIcon, NoteIcon } from '../../icons/icons.component'
+import LoaderTable from '../../loader-table/loader-table.component'
 
 const ProfilePage = ({ profile , getCurrentUsersProfile, match, singleProfileIsLoading}) =>{
 
@@ -18,8 +19,9 @@ const ProfilePage = ({ profile , getCurrentUsersProfile, match, singleProfileIsL
 
     return(
         <MainLayout>
-
-        {profile ? <>
+        {singleProfileIsLoading ? <LoaderTable /> :
+            <>
+            {profile ? <>
                 <div className="grid md:grid-cols-2 grid-cols-1 gap-3 auto-rows-max">
                     <div>
                         <div className="flex bg-white p-5 rounded-lg shadow overflow-hidden mt-3">
@@ -87,6 +89,9 @@ const ProfilePage = ({ profile , getCurrentUsersProfile, match, singleProfileIsL
                 no profile
                 </>
             }
+            </>
+        }
+        
 
         </MainLayout>
     )
