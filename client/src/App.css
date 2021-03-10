@@ -936,6 +936,17 @@ button {
   border-bottom: solid thin #000;
 }
 
+.hidden-input-wrapper textarea:active,
+.hidden-input-wrapper textarea:focus,
+.hidden-input-wrapper textarea:-moz-focusring,
+.hidden-input-wrapper textarea{
+  height: 106px;
+  width: calc(100% - 22px);
+  outline: none;
+  border: none;
+  border-bottom: solid thin #000;
+}
+
 .hidden-input-wrapper svg {
   stroke: #acacac;
 }

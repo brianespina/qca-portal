@@ -20,6 +20,9 @@ const ProfileSchema = new mongoose.Schema({
     bio: {
       type: String
     },
+    coachNotes: {
+      type: String
+    },
     competition: {
       event: {
         type: String

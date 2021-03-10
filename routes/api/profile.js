@@ -49,7 +49,8 @@ router.post('/' , [auth, [
         facebook,
         twitter,
         instagram,
-        user
+        user,
+        coachNotes
     } = req.body
 
     const profileFields = {}
@@ -59,6 +60,7 @@ router.post('/' , [auth, [
     if(address) profileFields.address = address
     if(belt) profileFields.belt = belt
     if(bio) profileFields.bio = bio
+    if(coachNotes) profileFields.coachNotes = coachNotes
 
     profileFields.social = {}
     if(twitter) profileFields.social.twitter = twitter

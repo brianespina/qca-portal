@@ -23,7 +23,8 @@ const ProfileAdminView = ({ profile, getAllProfiles, createUpdateProfile}) =>{
         emergency: '',
         address: '',
         belt: '',
-        bio: ''
+        bio: '',
+        coachNotes: ''
     })
 
     useEffect(()=>{
@@ -39,7 +40,8 @@ const ProfileAdminView = ({ profile, getAllProfiles, createUpdateProfile}) =>{
                 emergency: profile.emergency || '',
                 address: profile.address || '',
                 belt: profile.belt || '',
-                bio: profile.bio || ''
+                bio: profile.bio || '',
+                coachNotes: profile.coachNotes || ''
             })
         }
     }, [profile])
@@ -51,7 +53,8 @@ const ProfileAdminView = ({ profile, getAllProfiles, createUpdateProfile}) =>{
         emergency,
         address,
         belt,
-        bio
+        bio,
+        coachNotes
     } = formData
 
     const handleChange = event =>{
@@ -136,7 +139,7 @@ const ProfileAdminView = ({ profile, getAllProfiles, createUpdateProfile}) =>{
                         <div className="bg-white p-5 rounded-lg shadow overflow-hidden mt-3 flex-1">
                             <span className="sub-title"><NoteIcon className="icon-left-sm"/> Coach Notes</span>
                             <div>
-                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+                                <ProfileEditInput type="textarea" value={coachNotes} name="coachNotes" onChange={handleChange} active={editMode}/> 
                             </div>
                         </div>
                     </div>

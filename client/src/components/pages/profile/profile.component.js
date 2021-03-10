@@ -11,9 +11,7 @@ import LoaderTable from '../../loader-table/loader-table.component'
 const ProfilePage = ({ profile , getCurrentUsersProfile, match, singleProfileIsLoading}) =>{
 
     useEffect(()=>{
-        if(!profile){
-            getCurrentUsersProfile(match.params.id)
-        }
+        getCurrentUsersProfile(match.params.id)
     }, [match.params.id])
     
 
